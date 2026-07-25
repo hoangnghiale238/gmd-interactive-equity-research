@@ -343,7 +343,7 @@ function Slider({
 }
 
 export default function ResearchDashboard() {
-  const [theme, setTheme] = useState<"dark" | "light">("dark");
+  const [theme, setTheme] = useState<"dark" | "light">("light");
   const [activeChain, setActiveChain] = useState(0);
   const [historyMetric, setHistoryMetric] = useState<HistoryMetric>("Revenue");
   const [selectedYear, setSelectedYear] = useState(4);
