@@ -2,6 +2,8 @@
 
 An interactive, source-audited equity-research project that links Vietnam's trade and FDI backdrop to national container throughput, Gemadept's market share, earnings, cash flow and valuation.
 
+[**Open the interactive research website →**](https://gmd-vietnam-export-recovery.mrsheeplikesbanana.chatgpt.site)
+
 ![GMD Interactive Equity Research](public/og.png)
 
 ## Investment conclusion

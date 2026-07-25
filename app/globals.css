@@ -154,11 +154,23 @@ a {
 
 .icon-button,
 .guide-button,
+.github-button,
 .text-button {
   cursor: pointer;
   border: 1px solid var(--line);
   color: var(--ink);
   background: var(--panel);
+}
+
+.github-button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 13px;
+  border-radius: 12px;
+  color: var(--ink);
+  font-size: 11px;
+  font-weight: 800;
 }
 
 .icon-button {
@@ -234,6 +246,11 @@ a {
   border-radius: 13px;
   font-size: 13px;
   font-weight: 850;
+}
+
+.github-hero-button {
+  border-color: rgba(224, 170, 66, 0.36);
+  color: var(--amber);
 }
 
 .primary-button {
@@ -1362,6 +1379,11 @@ footer span {
   margin-top: 4px;
 }
 
+footer a {
+  color: var(--blue-soft);
+  font-weight: 750;
+}
+
 .floating-guide {
   position: fixed;
   z-index: 40;
@@ -1627,6 +1649,11 @@ footer span {
 
   .guide-button {
     display: none;
+  }
+
+  .github-button {
+    padding-inline: 11px;
+    font-size: 10px;
   }
 
   .hero {

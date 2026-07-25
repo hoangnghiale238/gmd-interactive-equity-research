@@ -488,6 +488,14 @@ export default function ResearchDashboard() {
           <a href="#sources">Sources</a>
         </nav>
         <div className="topbar-actions">
+          <a
+            className="github-button"
+            href="https://github.com/hoangnghiale238/gmd-interactive-equity-research"
+            target="_blank"
+            rel="noreferrer"
+          >
+            GitHub ↗
+          </a>
           <button
             className="icon-button"
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
@@ -524,6 +532,14 @@ export default function ResearchDashboard() {
             </a>
             <a className="secondary-button" href="/downloads/GMD_Top_Down_Investment_Note.pdf">
               Download investment note ↗
+            </a>
+            <a
+              className="secondary-button github-hero-button"
+              href="https://github.com/hoangnghiale238/gmd-interactive-equity-research"
+              target="_blank"
+              rel="noreferrer"
+            >
+              View source on GitHub ↗
             </a>
           </div>
           <p className="audit-line">
@@ -1203,6 +1219,15 @@ export default function ResearchDashboard() {
             <strong>Interview script</strong>
             <em>VN + EN pitches and Q&A</em>
           </a>
+          <a
+            href="https://github.com/hoangnghiale238/gmd-interactive-equity-research"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <span>GITHUB</span>
+            <strong>Public source repository</strong>
+            <em>Code, model files and documentation</em>
+          </a>
         </div>
       </section>
 
@@ -1213,7 +1238,14 @@ export default function ResearchDashboard() {
         </div>
         <p>
           Educational portfolio project — not investment advice. Data cut-off:
-          25 July 2026.
+          25 July 2026.{" "}
+          <a
+            href="https://github.com/hoangnghiale238/gmd-interactive-equity-research"
+            target="_blank"
+            rel="noreferrer"
+          >
+            View source on GitHub ↗
+          </a>
         </p>
       </footer>
 
