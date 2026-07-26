@@ -54,9 +54,10 @@ test("uses the supplied Gemadept hero and report scenario targets", async () => 
 });
 
 test("ships the VNStock price-performance and beta evidence", async () => {
-  const [dashboard, chart, rawData] = await Promise.all([
+  const [dashboard, chart, css, rawData] = await Promise.all([
     readFile(new URL("../app/ResearchDashboard.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/PricePerformance.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/globals.css", import.meta.url), "utf8"),
     readFile(
       new URL("../public/data/gmd-price-performance.json", import.meta.url),
       "utf8",
@@ -72,6 +73,15 @@ test("ships the VNStock price-performance and beta evidence", async () => {
   assert.match(chart, /percentage points/);
   assert.match(chart, /performance-crosshair/);
   assert.match(chart, /performance-floating-tooltip/);
+  const genericPanelRule = css.lastIndexOf(".site.light-theme .panel,");
+  const darkPanelOverride = css.lastIndexOf(
+    ".site.light-theme .panel.performance-panel",
+  );
+  assert.ok(darkPanelOverride > genericPanelRule);
+  assert.match(
+    css.slice(darkPanelOverride),
+    /background:\s*#101010/,
+  );
   assert.equal(data.weekly.length, 259);
   assert.equal(data.statistics.regression_observations, 258);
   assert.ok(data.statistics.raw_beta > 0.7);

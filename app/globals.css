@@ -3946,6 +3946,14 @@ footer a {
   }
 }
 
+/* Keep this exception after the generic light-theme panel rule. */
+.site.light-theme .panel.performance-panel {
+  color: #ffffff;
+  border-color: #171717;
+  background: #101010;
+  box-shadow: 0 24px 70px rgba(5, 18, 29, 0.2);
+}
+
 /* GMD palette must remain last in the cascade. */
 .site.light-theme {
   --navy-950: #f3f7fb;
