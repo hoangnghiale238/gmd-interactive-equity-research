@@ -20,6 +20,11 @@ type ScenarioInputs = {
 
 const CURRENT_PRICE = 73_200;
 const SHARES = 426.495109;
+const REPORT_TARGETS: Record<Exclude<ScenarioKey, "Custom">, number> = {
+  Base: 84_500,
+  Bull: 115_500,
+  Bear: 51_000,
+};
 
 const presets: Record<Exclude<ScenarioKey, "Custom">, ScenarioInputs> = {
   Base: {
@@ -334,7 +339,7 @@ export default function ResearchDashboard() {
     const revenue = portRevenue + logisticsRevenue + 8.057116;
     const operatingProfit = revenue * (inputs.margin / 100);
     const associates = 1157.659377947 * (1 + inputs.associateGrowth / 100);
-    const corePbt = operatingProfit + 225 - 120 - 250 + associates;
+    const corePbt = operatingProfit + 225 - 120 - 250 + associates - 11.5;
     const parentPat = corePbt * 0.905 * 0.78;
     const eps = (parentPat * 1000) / SHARES;
     const peValue = eps * inputs.pe;
@@ -345,7 +350,8 @@ export default function ResearchDashboard() {
     const dcfValue =
       88_988 * earningsAdjustment * (baseSpread / spread) * capexAdjustment;
     const blended = (peValue + dcfValue) / 2;
-    const target = roundTo500(blended);
+    const target =
+      scenario === "Custom" ? roundTo500(blended) : REPORT_TARGETS[scenario];
     const upside = target / CURRENT_PRICE - 1;
     const rating = upside >= 0.15 ? "BUY" : upside <= -0.1 ? "SELL" : "HOLD";
     return {
@@ -361,7 +367,7 @@ export default function ResearchDashboard() {
       upside,
       rating,
     };
-  }, [inputs]);
+  }, [inputs, scenario]);
 
   const peerScores = useMemo(() => {
     const totalWeight = weights.reduce((sum, weight) => sum + weight, 0) || 1;
@@ -432,14 +438,13 @@ export default function ResearchDashboard() {
       <section className="hero" id="top">
         <div className="hero-overlay" />
         <div className="hero-content">
-          <p className="kicker">Personal Equity Research Project</p>
-          <h1>GMD Equity Research: Export Recovery &amp; Port Earnings</h1>
+          <p className="kicker">Vietnam Ports · Equity Research</p>
+          <h1>GMD: Export Recovery Meets Scarce Port Capacity</h1>
           <p className="hero-copy-text">
-            A 12-month view on Gemadept. Vietnam&apos;s trade recovery supports
-            container throughput, while capacity ramp-up and associate earnings
-            remain the key execution variables.
+            A top-down investment case linking Vietnam&apos;s trade recovery to
+            container throughput, GMD&apos;s market share and core earnings.
           </p>
-          <p className="hero-meta">Base case · 12-month horizon · Market data as of 24 Jul 2026</p>
+          <p className="hero-meta">BUY · 12-month target · Market data as of 24 Jul 2026</p>
           <div className="hero-actions">
             <a className="btn primary" href="#summary">Read investment case</a>
             <a className="btn" href="#valuation">Open valuation module</a>
@@ -483,7 +488,7 @@ export default function ResearchDashboard() {
             </div>
           </div>
           <div className="summary-range">
-            <div><span>Target range</span><b>51,000–105,500</b></div>
+            <div><span>Bear / Bull</span><b>51,000 / 115,500</b></div>
             <div><span>2026E revenue</span><b>6,757bn</b></div>
             <div><span>2026E core PBT</span><b>3,009bn</b></div>
             <div><span>Investment horizon</span><b>12 months</b></div>
@@ -492,19 +497,21 @@ export default function ResearchDashboard() {
 
         <div className="summary-lists">
           <article>
-            <div className="list-head"><span>3 thesis</span><b>Why the stock works</b></div>
+            <div className="list-head"><span>Research path</span><b>How the report builds the case</b></div>
             <ol className="clean-list">
-              <li><strong>Trade recovery supports port volumes</strong><small>Container throughput is forecast separately from headline trade value.</small></li>
-              <li><strong>Capacity creates a market-share runway</strong><small>Nam Dinh Vu and Gemalink provide room to capture additional services and volumes.</small></li>
-              <li><strong>Associates strengthen earnings quality</strong><small>Equity-accounted port assets remain a material contributor to core profit.</small></li>
+              <li><strong>Macro → TEU</strong><small>Trade is the backdrop; physical container throughput is the operating link.</small></li>
+              <li><strong>Stock selection</strong><small>GMD ranks first in the weighted port screen versus PHP, VSC and DVP.</small></li>
+              <li><strong>Historical evidence</strong><small>Throughput and core profit scaled while associates became material.</small></li>
+              <li><strong>Forecast</strong><small>Share gains and lower expansion capex support cash conversion.</small></li>
+              <li><strong>Valuation</strong><small>A 50/50 P/E and DCF/SOTP blend produces the selected target.</small></li>
             </ol>
           </article>
           <article>
-            <div className="list-head risk"><span>3 risks</span><b>What can break the thesis</b></div>
+            <div className="list-head risk"><span>Risk balance</span><b>What the report actually tests</b></div>
             <ol className="clean-list risk-list">
-              <li><strong>Capacity ramps slower than expected</strong><small>New berths add value only when they attract services and reach adequate utilisation.</small></li>
-              <li><strong>Market share weakens</strong><small>Regional competition may absorb part of the national throughput recovery.</small></li>
-              <li><strong>Higher capex or discount rate</strong><small>Cash conversion and DCF value are sensitive to expansion spending and WACC.</small></li>
+              <li><strong>4 catalysts</strong><small>Trade and FDI, Nam Dinh Vu Phase 3, Gemalink Phase 2 and unit/mix improvement.</small></li>
+              <li><strong>4 downside triggers</strong><small>National TEU, market share, project timing and parent-level cash conversion.</small></li>
+              <li><strong>Limited margin of safety</strong><small>15.4% base-case upside is balanced by a VND 51,000 bear-case value.</small></li>
             </ol>
           </article>
         </div>
@@ -1015,15 +1022,15 @@ export default function ResearchDashboard() {
           {(riskView === "Catalysts"
             ? [
                 ["2026", "Trade and FDI backdrop supports national container demand."],
-                ["2026", "Nam Dinh Vu Phase 3 contributes for a full year."],
-                ["Q4 2027", "Gemalink Phase 2 commissioning adds deep-sea capacity."],
-                ["2028+", "Associate earnings step up as Gemalink ramps."],
+                ["2026", "Nam Dinh Vu Phase 3 contributes for a full year and lifts Northern route flexibility."],
+                ["Q4 2027", "Gemalink Phase 2 commissioning raises equity-accounted earnings from 2028."],
+                ["Unit / mix", "Service and cargo mix lifts revenue per system TEU by 2.5%–3.0% annually."],
               ]
             : [
                 ["Demand", "National TEU growth falls below 5% despite stronger trade value."],
                 ["Share", "GMD market share drops below 14.8% as competing capacity absorbs growth."],
                 ["Execution", "Gemalink Phase 2 slips beyond Q4 2027 or ramps below plan."],
-                ["Cash", "Capex stays above VND 1.5tn and NCI leakage blocks cash conversion."],
+                ["Cash", "Capex stays above VND 1.5tn and NCI leakage prevents parent cash conversion."],
               ]
           ).map(([time, text], index) => (
             <button key={text} className="risk-item">

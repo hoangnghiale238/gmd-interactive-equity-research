@@ -2617,6 +2617,82 @@ footer a {
   }
 }
 
+/* Final hero composition: keep the supplied GEMADEPT wordmark fully unobstructed. */
+.site.light-theme .hero {
+  min-height: 780px !important;
+  align-items: end !important;
+  padding: 390px clamp(18px, 4vw, 54px) 64px !important;
+  background-image:
+    linear-gradient(0deg, rgba(3, 34, 59, 0.88) 0%, rgba(3, 34, 59, 0.42) 34%, transparent 60%),
+    linear-gradient(90deg, rgba(3, 47, 82, 0.22), transparent 38%, transparent 70%, rgba(3, 47, 82, 0.16)),
+    url("/hero-gemadept.jpg") !important;
+  background-position: center top !important;
+  background-size: cover !important;
+}
+
+.site.light-theme .hero-overlay {
+  background: none !important;
+}
+
+.site.light-theme .hero-content {
+  align-self: end !important;
+  max-width: 620px !important;
+  padding: 22px 24px !important;
+  background: rgba(3, 34, 59, 0.82) !important;
+  backdrop-filter: blur(4px);
+}
+
+.site.light-theme .hero h1 {
+  max-width: 580px !important;
+  font-size: clamp(36px, 4.2vw, 56px) !important;
+  line-height: 1.02 !important;
+}
+
+.site.light-theme .hero-copy-text {
+  margin-top: 16px;
+}
+
+.site.light-theme .hero-actions {
+  margin-top: 20px;
+}
+
+.site.light-theme .hero-card {
+  width: min(100%, 380px) !important;
+  justify-self: end !important;
+  align-self: end !important;
+}
+
+@media (max-width: 1100px) {
+  .site.light-theme .hero {
+    min-height: 980px !important;
+    padding-top: 390px !important;
+  }
+
+  .site.light-theme .hero-card {
+    justify-self: start !important;
+  }
+}
+
+@media (max-width: 580px) {
+  .site.light-theme .hero {
+    min-height: 0 !important;
+    padding: 290px 18px 48px !important;
+    background-color: #032f52 !important;
+    background-position: center top !important;
+    background-size: auto 290px !important;
+    background-repeat: no-repeat !important;
+  }
+
+  .site.light-theme .hero-content,
+  .site.light-theme .hero-card {
+    background: rgba(3, 34, 59, 0.94) !important;
+  }
+
+  .site.light-theme .hero h1 {
+    font-size: 38px !important;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
