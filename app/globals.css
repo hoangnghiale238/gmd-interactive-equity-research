@@ -2617,6 +2617,339 @@ footer a {
   }
 }
 
+/* Interactive market-performance module */
+.performance-section {
+  background:
+    linear-gradient(180deg, rgba(0, 104, 181, 0.045), transparent 58%),
+    #f8fbfe;
+}
+
+.performance-module {
+  display: grid;
+  gap: 18px;
+}
+
+.performance-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.performance-kpis {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.performance-kpis article {
+  display: grid;
+  gap: 7px;
+  min-width: 0;
+  padding: 18px 20px;
+  border: 1px solid rgba(18, 58, 99, 0.12);
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 12px 34px rgba(25, 69, 105, 0.07);
+}
+
+.performance-kpis span,
+.beta-strip span {
+  color: #63788d;
+  font-size: 12px;
+  font-weight: 750;
+  letter-spacing: 0.075em;
+  text-transform: uppercase;
+}
+
+.performance-kpis strong {
+  color: #123a63;
+  font-size: clamp(26px, 3vw, 38px);
+  line-height: 1;
+}
+
+.performance-kpis strong.positive {
+  color: #087a55;
+}
+
+.performance-kpis strong.negative {
+  color: #b53b45;
+}
+
+.performance-kpis small {
+  color: #718296;
+  font-size: 12px;
+}
+
+.performance-chart-panel {
+  position: relative;
+  overflow: hidden;
+  padding: 18px 18px 10px;
+  border-color: rgba(0, 104, 181, 0.16);
+  background:
+    linear-gradient(180deg, rgba(233, 246, 255, 0.72), rgba(255, 255, 255, 0.96) 36%),
+    #ffffff;
+}
+
+.performance-legend {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 0 10px 8px;
+  color: #425970;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.performance-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.performance-legend i {
+  display: inline-block;
+  width: 24px;
+  height: 3px;
+  border-radius: 999px;
+}
+
+.performance-legend .legend-gmd {
+  background: #0068b5;
+}
+
+.performance-legend .legend-index {
+  background: #8a9cad;
+}
+
+.performance-legend em {
+  margin-left: auto;
+  color: #718296;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.performance-chart {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 300px;
+  touch-action: pan-y;
+  cursor: crosshair;
+}
+
+.chart-gridline {
+  stroke: rgba(18, 58, 99, 0.13);
+  stroke-dasharray: 4 5;
+  stroke-width: 1;
+}
+
+.chart-tick {
+  stroke: rgba(18, 58, 99, 0.34);
+  stroke-width: 1;
+}
+
+.chart-axis-label {
+  fill: #708297;
+  font-size: 11px;
+}
+
+.chart-axis-gmd {
+  fill: #0068b5;
+}
+
+.performance-line {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.gmd-line {
+  stroke: #0068b5;
+  stroke-width: 3.2;
+}
+
+.index-line {
+  stroke: #8a9cad;
+  stroke-width: 2.4;
+}
+
+.hover-line {
+  stroke: rgba(18, 58, 99, 0.34);
+  stroke-dasharray: 3 4;
+}
+
+.hover-dot {
+  vector-effect: non-scaling-stroke;
+  stroke: #ffffff;
+  stroke-width: 2;
+}
+
+.gmd-dot {
+  fill: #0068b5;
+}
+
+.index-dot {
+  fill: #8a9cad;
+}
+
+.chart-tooltip {
+  pointer-events: none;
+}
+
+.chart-tooltip rect {
+  fill: rgba(3, 47, 82, 0.96);
+  stroke: rgba(255, 255, 255, 0.16);
+}
+
+.chart-tooltip text {
+  fill: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.chart-tooltip .tooltip-date {
+  fill: #bcdcf2;
+  font-size: 11px;
+}
+
+.chart-tooltip .tooltip-gmd {
+  fill: #72c4ff;
+}
+
+.chart-tooltip .tooltip-index {
+  fill: #c6d0da;
+}
+
+.performance-chart-notes {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 0 10px 4px;
+  color: #718296;
+  font-size: 11px;
+}
+
+.beta-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(120px, 0.55fr)) minmax(280px, 1.8fr);
+  gap: 0;
+  overflow: hidden;
+  border: 1px solid rgba(0, 104, 181, 0.18);
+  border-radius: 16px;
+  background: #ffffff;
+}
+
+.beta-strip > div,
+.beta-strip > p {
+  min-width: 0;
+  margin: 0;
+  padding: 18px 20px;
+  border-right: 1px solid rgba(18, 58, 99, 0.1);
+}
+
+.beta-strip > div {
+  display: grid;
+  align-content: center;
+  gap: 7px;
+}
+
+.beta-strip > div strong {
+  color: #0068b5;
+  font-size: 27px;
+}
+
+.beta-strip > p {
+  display: flex;
+  align-items: center;
+  border-right: 0;
+  color: #425970;
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.performance-footnote {
+  margin-top: -2px;
+}
+
+.performance-empty {
+  padding: 34px;
+  color: #60758a;
+  text-align: center;
+}
+
+@media (max-width: 920px) {
+  .performance-kpis {
+    grid-template-columns: 1fr;
+  }
+
+  .beta-strip {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .beta-strip > p {
+    grid-column: 1 / -1;
+    border-top: 1px solid rgba(18, 58, 99, 0.1);
+  }
+}
+
+@media (max-width: 680px) {
+  .performance-controls {
+    align-items: stretch;
+  }
+
+  .performance-controls .segmented-control {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .performance-controls .segmented-control button {
+    flex: 1 0 auto;
+    white-space: nowrap;
+  }
+
+  .performance-chart-panel {
+    padding: 14px 8px 8px;
+  }
+
+  .performance-legend {
+    flex-wrap: wrap;
+    padding-inline: 8px;
+  }
+
+  .performance-legend em {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .performance-chart {
+    min-height: 250px;
+  }
+
+  .performance-chart-notes {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .beta-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .beta-strip > div,
+  .beta-strip > p {
+    border-right: 0;
+    border-bottom: 1px solid rgba(18, 58, 99, 0.1);
+  }
+
+  .beta-strip > p {
+    grid-column: auto;
+    border-bottom: 0;
+  }
+}
+
 /* Final hero composition: keep the supplied GEMADEPT wordmark fully unobstructed. */
 .site.light-theme .hero {
   min-height: 780px !important;

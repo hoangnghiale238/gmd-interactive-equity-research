@@ -1,0 +1,2623 @@
+{
+  "metadata": {
+    "library": "vnstock",
+    "library_version": "4.0.5",
+    "api_class": "Quote",
+    "underlying_source": "VCI",
+    "symbols": [
+      "GMD",
+      "VNINDEX"
+    ],
+    "interval_fetched": "1D",
+    "weekly_rule": "W-FRI, last available close in each week",
+    "price_field": "close",
+    "price_adjustment_note": "Series uses the close field returned by VNStock/VCI. No separate adjusted-close field was available in this API response.",
+    "start": "2021-07-23",
+    "end": "2026-07-24",
+    "fetched_at": "2026-07-26T12:48:07+07:00",
+    "documentation_url": "https://vnstocks.com/docs/vnstock/du-lieu-thi-truong-market-data"
+  },
+  "statistics": {
+    "daily_gmd_rows": 1248,
+    "daily_vnindex_rows": 1248,
+    "weekly_aligned_rows": 259,
+    "regression_observations": 258,
+    "raw_beta": 0.7499023204398405,
+    "adjusted_beta_blume": 0.8324345546946932,
+    "correlation": 0.44823048626558637,
+    "r_squared": 0.20091056881788402,
+    "max_abs_weekly_gmd_return": 0.15948670944087984
+  },
+  "weekly": [
+    {
+      "date": "2021-07-23",
+      "sourceDate": "2021-07-23",
+      "gmd": 30.58,
+      "vnindex": 1268.83,
+      "gmdReturn": null,
+      "vnindexReturn": null,
+      "gmdRebased": 100.0,
+      "vnindexRebased": 100.0
+    },
+    {
+      "date": "2021-07-30",
+      "sourceDate": "2021-07-30",
+      "gmd": 33.17,
+      "vnindex": 1310.05,
+      "gmdReturn": 0.08469587965990866,
+      "vnindexReturn": 0.03248662153322357,
+      "gmdRebased": 108.46958796599087,
+      "vnindexRebased": 103.24866215332236
+    },
+    {
+      "date": "2021-08-06",
+      "sourceDate": "2021-08-06",
+      "gmd": 34.76,
+      "vnindex": 1341.45,
+      "gmdReturn": 0.047934880916490785,
+      "vnindexReturn": 0.023968550818671108,
+      "gmdRebased": 113.66906474820144,
+      "vnindexRebased": 105.72338295910406
+    },
+    {
+      "date": "2021-08-13",
+      "sourceDate": "2021-08-13",
+      "gmd": 36.16,
+      "vnindex": 1357.05,
+      "gmdReturn": 0.04027617951668572,
+      "vnindexReturn": 0.011629207201162783,
+      "gmdRebased": 118.24722040549378,
+      "vnindexRebased": 106.95286208554337
+    },
+    {
+      "date": "2021-08-20",
+      "sourceDate": "2021-08-20",
+      "gmd": 34.94,
+      "vnindex": 1329.43,
+      "gmdReturn": -0.033738938053097356,
+      "vnindexReturn": -0.02035297151910387,
+      "gmdRebased": 114.25768476128188,
+      "vnindexRebased": 104.77605352962966
+    },
+    {
+      "date": "2021-08-27",
+      "sourceDate": "2021-08-27",
+      "gmd": 37.71,
+      "vnindex": 1313.2,
+      "gmdReturn": 0.07927876359473385,
+      "vnindexReturn": -0.012208239621491979,
+      "gmdRebased": 123.31589274035318,
+      "vnindexRebased": 103.49692236154569
+    },
+    {
+      "date": "2021-09-03",
+      "sourceDate": "2021-09-01",
+      "gmd": 39.11,
+      "vnindex": 1334.65,
+      "gmdReturn": 0.03712543092018028,
+      "vnindexReturn": 0.016334145598537964,
+      "gmdRebased": 127.89404839764553,
+      "vnindexRebased": 105.18745616039975
+    },
+    {
+      "date": "2021-09-10",
+      "sourceDate": "2021-09-10",
+      "gmd": 37.63,
+      "vnindex": 1345.31,
+      "gmdReturn": -0.0378419841472768,
+      "vnindexReturn": 0.007987112726182799,
+      "gmdRebased": 123.05428384565076,
+      "vnindexRebased": 106.02760023013327
+    },
+    {
+      "date": "2021-09-17",
+      "sourceDate": "2021-09-17",
+      "gmd": 38.81,
+      "vnindex": 1352.64,
+      "gmdReturn": 0.031357959075206,
+      "vnindexReturn": 0.005448558324847141,
+      "gmdRebased": 126.91301504251146,
+      "vnindexRebased": 106.60529779403075
+    },
+    {
+      "date": "2021-09-24",
+      "sourceDate": "2021-09-24",
+      "gmd": 36.16,
+      "vnindex": 1351.17,
+      "gmdReturn": -0.06828137078072671,
+      "vnindexReturn": -0.0010867636621717525,
+      "gmdRebased": 118.24722040549378,
+      "vnindexRebased": 106.48944303019319
+    },
+    {
+      "date": "2021-10-01",
+      "sourceDate": "2021-10-01",
+      "gmd": 35.93,
+      "vnindex": 1334.89,
+      "gmdReturn": -0.006360619469026441,
+      "vnindexReturn": -0.012048816951234831,
+      "gmdRebased": 117.49509483322433,
+      "vnindexRebased": 105.20637122388344
+    },
+    {
+      "date": "2021-10-08",
+      "sourceDate": "2021-10-08",
+      "gmd": 37.78,
+      "vnindex": 1372.73,
+      "gmdReturn": 0.051489006401336024,
+      "vnindexReturn": 0.02834690498842596,
+      "gmdRebased": 123.54480052321779,
+      "vnindexRebased": 108.18864623314393
+    },
+    {
+      "date": "2021-10-15",
+      "sourceDate": "2021-10-15",
+      "gmd": 37.56,
+      "vnindex": 1392.7,
+      "gmdReturn": -0.0058231868713605195,
+      "vnindexReturn": 0.014547653216583134,
+      "gmdRebased": 122.82537606278613,
+      "vnindexRebased": 109.76253714051529
+    },
+    {
+      "date": "2021-10-22",
+      "sourceDate": "2021-10-22",
+      "gmd": 36.67,
+      "vnindex": 1389.24,
+      "gmdReturn": -0.023695420660276856,
+      "vnindexReturn": -0.0024843828534502066,
+      "gmdRebased": 119.91497710922172,
+      "vnindexRebased": 109.4898449752922
+    },
+    {
+      "date": "2021-10-29",
+      "sourceDate": "2021-10-29",
+      "gmd": 38.59,
+      "vnindex": 1444.27,
+      "gmdReturn": 0.05235887646577586,
+      "vnindexReturn": 0.039611586191010906,
+      "gmdRebased": 126.19359058207982,
+      "vnindexRebased": 113.82691140657141
+    },
+    {
+      "date": "2021-11-05",
+      "sourceDate": "2021-11-05",
+      "gmd": 37.63,
+      "vnindex": 1456.51,
+      "gmdReturn": -0.024876911116869627,
+      "vnindexReturn": 0.00847486965733557,
+      "gmdRebased": 123.05428384565076,
+      "vnindexRebased": 114.79157964423918
+    },
+    {
+      "date": "2021-11-12",
+      "sourceDate": "2021-11-12",
+      "gmd": 38.89,
+      "vnindex": 1473.37,
+      "gmdReturn": 0.03348392240233844,
+      "vnindexReturn": 0.011575615684066731,
+      "gmdRebased": 127.17462393721388,
+      "vnindexRebased": 116.12036285396783
+    },
+    {
+      "date": "2021-11-19",
+      "sourceDate": "2021-11-19",
+      "gmd": 36.67,
+      "vnindex": 1452.35,
+      "gmdReturn": -0.0570840833119054,
+      "vnindexReturn": -0.01426661327433032,
+      "gmdRebased": 119.91497710922172,
+      "vnindexRebased": 114.46371854385535
+    },
+    {
+      "date": "2021-11-26",
+      "sourceDate": "2021-11-26",
+      "gmd": 36.49,
+      "vnindex": 1493.03,
+      "gmdReturn": -0.004908644668666473,
+      "vnindexReturn": 0.028009777257548052,
+      "gmdRebased": 119.32635709614128,
+      "vnindexRebased": 117.66982180433942
+    },
+    {
+      "date": "2021-12-03",
+      "sourceDate": "2021-12-03",
+      "gmd": 36.16,
+      "vnindex": 1443.32,
+      "gmdReturn": -0.00904357358180341,
+      "vnindexReturn": -0.03329470941642165,
+      "gmdRebased": 118.24722040549378,
+      "vnindexRebased": 113.75203928028183
+    },
+    {
+      "date": "2021-12-10",
+      "sourceDate": "2021-12-10",
+      "gmd": 35.93,
+      "vnindex": 1463.54,
+      "gmdReturn": -0.006360619469026441,
+      "vnindexReturn": 0.014009367292076691,
+      "gmdRebased": 117.49509483322433,
+      "vnindexRebased": 115.34563337878203
+    },
+    {
+      "date": "2021-12-17",
+      "sourceDate": "2021-12-17",
+      "gmd": 36.38,
+      "vnindex": 1479.79,
+      "gmdReturn": 0.012524352908433123,
+      "vnindexReturn": 0.011103215491206297,
+      "gmdRebased": 118.96664486592545,
+      "vnindexRebased": 116.62634080215632
+    },
+    {
+      "date": "2021-12-24",
+      "sourceDate": "2021-12-24",
+      "gmd": 33.76,
+      "vnindex": 1477.03,
+      "gmdReturn": -0.07201759208356251,
+      "vnindexReturn": -0.0018651295116198785,
+      "gmdRebased": 110.39895356442119,
+      "vnindexRebased": 116.40881757209398
+    },
+    {
+      "date": "2021-12-31",
+      "sourceDate": "2021-12-31",
+      "gmd": 34.9,
+      "vnindex": 1498.28,
+      "gmdReturn": 0.03376777251184837,
+      "vnindexReturn": 0.014386979275979428,
+      "gmdRebased": 114.12688031393068,
+      "vnindexRebased": 118.08358881804497
+    },
+    {
+      "date": "2022-01-07",
+      "sourceDate": "2022-01-07",
+      "gmd": 35.53,
+      "vnindex": 1528.48,
+      "gmdReturn": 0.018051575931232078,
+      "vnindexReturn": 0.020156446058146704,
+      "gmdRebased": 116.18705035971225,
+      "vnindexRebased": 120.46373430640827
+    },
+    {
+      "date": "2022-01-14",
+      "sourceDate": "2022-01-14",
+      "gmd": 31.58,
+      "vnindex": 1496.02,
+      "gmdReturn": -0.11117365606529706,
+      "vnindexReturn": -0.021236784256254637,
+      "gmdRebased": 103.27011118378024,
+      "vnindexRebased": 117.9054719702403
+    },
+    {
+      "date": "2022-01-21",
+      "sourceDate": "2022-01-21",
+      "gmd": 30.99,
+      "vnindex": 1472.89,
+      "gmdReturn": -0.0186827105763141,
+      "vnindexReturn": -0.01546102324835219,
+      "gmdRebased": 101.34074558534991,
+      "vnindexRebased": 116.08253272700048
+    },
+    {
+      "date": "2022-01-28",
+      "sourceDate": "2022-01-28",
+      "gmd": 31.73,
+      "vnindex": 1478.96,
+      "gmdReturn": 0.023878670538883595,
+      "vnindexReturn": 0.004121149576682637,
+      "gmdRebased": 103.7606278613473,
+      "vnindexRebased": 116.56092620760859
+    },
+    {
+      "date": "2022-02-11",
+      "sourceDate": "2022-02-11",
+      "gmd": 35.68,
+      "vnindex": 1501.71,
+      "gmdReturn": 0.12448786637251819,
+      "vnindexReturn": 0.015382430897387334,
+      "gmdRebased": 116.67756703727927,
+      "vnindexRebased": 118.35391660033261
+    },
+    {
+      "date": "2022-02-18",
+      "sourceDate": "2022-02-18",
+      "gmd": 38.3,
+      "vnindex": 1504.84,
+      "gmdReturn": 0.07343049327354256,
+      "vnindexReturn": 0.0020842905754105967,
+      "gmdRebased": 125.24525833878353,
+      "vnindexRebased": 118.6006005532656
+    },
+    {
+      "date": "2022-02-25",
+      "sourceDate": "2022-02-25",
+      "gmd": 37.26,
+      "vnindex": 1498.89,
+      "gmdReturn": -0.027154046997388992,
+      "vnindexReturn": -0.003953908721192834,
+      "gmdRebased": 121.84434270765206,
+      "vnindexRebased": 118.13166460439935
+    },
+    {
+      "date": "2022-03-04",
+      "sourceDate": "2022-03-04",
+      "gmd": 40.58,
+      "vnindex": 1505.33,
+      "gmdReturn": 0.08910359634997311,
+      "vnindexReturn": 0.004296512752770321,
+      "gmdRebased": 132.7011118378025,
+      "vnindexRebased": 118.63921880787814
+    },
+    {
+      "date": "2022-03-11",
+      "sourceDate": "2022-03-11",
+      "gmd": 41.1,
+      "vnindex": 1466.54,
+      "gmdReturn": 0.012814194184327388,
+      "vnindexReturn": -0.02576843615685598,
+      "gmdRebased": 134.40156965336823,
+      "vnindexRebased": 115.58207167232806
+    },
+    {
+      "date": "2022-03-18",
+      "sourceDate": "2022-03-18",
+      "gmd": 39.77,
+      "vnindex": 1469.1,
+      "gmdReturn": -0.0323600973236009,
+      "vnindexReturn": 0.0017456053022759654,
+      "gmdRebased": 130.0523217789405,
+      "vnindexRebased": 115.78383234948733
+    },
+    {
+      "date": "2022-03-25",
+      "sourceDate": "2022-03-25",
+      "gmd": 40.44,
+      "vnindex": 1498.5,
+      "gmdReturn": 0.016846869499622663,
+      "vnindexReturn": 0.020012252399428387,
+      "gmdRebased": 132.24329627207325,
+      "vnindexRebased": 118.10092762623836
+    },
+    {
+      "date": "2022-04-01",
+      "sourceDate": "2022-04-01",
+      "gmd": 42.8,
+      "vnindex": 1516.44,
+      "gmdReturn": 0.05835806132542043,
+      "vnindexReturn": 0.011971971971971973,
+      "gmdRebased": 139.96075866579463,
+      "vnindexRebased": 119.51482862164357
+    },
+    {
+      "date": "2022-04-08",
+      "sourceDate": "2022-04-08",
+      "gmd": 40.44,
+      "vnindex": 1482.0,
+      "gmdReturn": -0.055140186915887845,
+      "vnindexReturn": -0.022711086492047228,
+      "gmdRebased": 132.24329627207325,
+      "vnindexRebased": 116.80051701173522
+    },
+    {
+      "date": "2022-04-15",
+      "sourceDate": "2022-04-15",
+      "gmd": 42.28,
+      "vnindex": 1458.56,
+      "gmdReturn": 0.04549950544015835,
+      "vnindexReturn": -0.015816464237516925,
+      "gmdRebased": 138.2603008502289,
+      "vnindexRebased": 114.95314581149563
+    },
+    {
+      "date": "2022-04-22",
+      "sourceDate": "2022-04-22",
+      "gmd": 38.66,
+      "vnindex": 1379.23,
+      "gmdReturn": -0.08561967833491024,
+      "vnindexReturn": -0.054389260640631765,
+      "gmdRebased": 126.42249836494442,
+      "vnindexRebased": 108.70092920249364
+    },
+    {
+      "date": "2022-04-29",
+      "sourceDate": "2022-04-29",
+      "gmd": 40.14,
+      "vnindex": 1366.8,
+      "gmdReturn": 0.0382824624935334,
+      "vnindexReturn": -0.009012274965016775,
+      "gmdRebased": 131.2622629169392,
+      "vnindexRebased": 107.72128653956796
+    },
+    {
+      "date": "2022-05-06",
+      "sourceDate": "2022-05-06",
+      "gmd": 41.39,
+      "vnindex": 1329.26,
+      "gmdReturn": 0.031141006477329425,
+      "vnindexReturn": -0.027465613110916,
+      "gmdRebased": 135.3499018966645,
+      "vnindexRebased": 104.76265535966205
+    },
+    {
+      "date": "2022-05-13",
+      "sourceDate": "2022-05-13",
+      "gmd": 38.37,
+      "vnindex": 1182.77,
+      "gmdReturn": -0.07296448417492152,
+      "vnindexReturn": -0.11020417375080871,
+      "gmdRebased": 125.47416612164814,
+      "vnindexRebased": 93.21737348580976
+    },
+    {
+      "date": "2022-05-20",
+      "sourceDate": "2022-05-20",
+      "gmd": 36.75,
+      "vnindex": 1240.71,
+      "gmdReturn": -0.04222048475371376,
+      "vnindexReturn": 0.04898670071104272,
+      "gmdRebased": 120.17658600392413,
+      "vnindexRebased": 97.78378506182862
+    },
+    {
+      "date": "2022-05-27",
+      "sourceDate": "2022-05-27",
+      "gmd": 40.8,
+      "vnindex": 1285.45,
+      "gmdReturn": 0.11020408163265305,
+      "vnindexReturn": 0.0360599979044256,
+      "gmdRebased": 133.42053629823414,
+      "vnindexRebased": 101.30986814624498
+    },
+    {
+      "date": "2022-06-03",
+      "sourceDate": "2022-06-03",
+      "gmd": 43.17,
+      "vnindex": 1287.98,
+      "gmdReturn": 0.05808823529411766,
+      "vnindexReturn": 0.00196818234859375,
+      "gmdRebased": 141.17069980379333,
+      "vnindexRebased": 101.5092644404688
+    },
+    {
+      "date": "2022-06-10",
+      "sourceDate": "2022-06-10",
+      "gmd": 40.58,
+      "vnindex": 1284.08,
+      "gmdReturn": -0.05999536715311571,
+      "vnindexReturn": -0.0030279973291511553,
+      "gmdRebased": 132.7011118378025,
+      "vnindexRebased": 101.20189465885896
+    },
+    {
+      "date": "2022-06-17",
+      "sourceDate": "2022-06-17",
+      "gmd": 40.95,
+      "vnindex": 1217.3,
+      "gmdReturn": 0.009117792015771453,
+      "vnindexReturn": -0.05200610553859575,
+      "gmdRebased": 133.9110529758012,
+      "vnindexRebased": 95.93877824452449
+    },
+    {
+      "date": "2022-06-24",
+      "sourceDate": "2022-06-24",
+      "gmd": 38.37,
+      "vnindex": 1185.48,
+      "gmdReturn": -0.06300366300366311,
+      "vnindexReturn": -0.026139817629179274,
+      "gmdRebased": 125.47416612164814,
+      "vnindexRebased": 93.43095607764634
+    },
+    {
+      "date": "2022-07-01",
+      "sourceDate": "2022-07-01",
+      "gmd": 37.93,
+      "vnindex": 1198.9,
+      "gmdReturn": -0.0114672921553296,
+      "vnindexReturn": 0.011320309073118207,
+      "gmdRebased": 124.03531720078482,
+      "vnindexRebased": 94.48862337744222
+    },
+    {
+      "date": "2022-07-08",
+      "sourceDate": "2022-07-08",
+      "gmd": 35.2,
+      "vnindex": 1171.31,
+      "gmdReturn": -0.07197469021882408,
+      "vnindexReturn": -0.023012761698223527,
+      "gmdRebased": 115.10791366906477,
+      "vnindexRebased": 92.31417920446395
+    },
+    {
+      "date": "2022-07-15",
+      "sourceDate": "2022-07-15",
+      "gmd": 36.16,
+      "vnindex": 1179.25,
+      "gmdReturn": 0.027272727272727115,
+      "vnindexReturn": 0.006778734920729779,
+      "gmdRebased": 118.24722040549378,
+      "vnindexRebased": 92.93995255471576
+    },
+    {
+      "date": "2022-07-22",
+      "sourceDate": "2022-07-22",
+      "gmd": 37.48,
+      "vnindex": 1194.76,
+      "gmdReturn": 0.036504424778761146,
+      "vnindexReturn": 0.013152427390290322,
+      "gmdRebased": 122.5637671680837,
+      "vnindexRebased": 94.1623385323487
+    },
+    {
+      "date": "2022-07-29",
+      "sourceDate": "2022-07-29",
+      "gmd": 36.89,
+      "vnindex": 1206.33,
+      "gmdReturn": -0.01574172892209169,
+      "vnindexReturn": 0.00968395326257987,
+      "gmdRebased": 120.63440156965338,
+      "vnindexRebased": 95.0742022177912
+    },
+    {
+      "date": "2022-08-05",
+      "sourceDate": "2022-08-05",
+      "gmd": 38.3,
+      "vnindex": 1252.74,
+      "gmdReturn": 0.03822174030902681,
+      "vnindexReturn": 0.03847205988411129,
+      "gmdRebased": 125.24525833878353,
+      "vnindexRebased": 98.73190261894817
+    },
+    {
+      "date": "2022-08-12",
+      "sourceDate": "2022-08-12",
+      "gmd": 38.22,
+      "vnindex": 1262.33,
+      "gmdReturn": -0.002088772845952991,
+      "vnindexReturn": 0.007655219758289755,
+      "gmdRebased": 124.98364944408111,
+      "vnindexRebased": 99.48771703065027
+    },
+    {
+      "date": "2022-08-19",
+      "sourceDate": "2022-08-19",
+      "gmd": 38.37,
+      "vnindex": 1269.18,
+      "gmdReturn": 0.003924646781789498,
+      "vnindexReturn": 0.005426473267687637,
+      "gmdRebased": 125.47416612164814,
+      "vnindexRebased": 100.02758446758038
+    },
+    {
+      "date": "2022-08-26",
+      "sourceDate": "2022-08-26",
+      "gmd": 38.37,
+      "vnindex": 1282.57,
+      "gmdReturn": 0.0,
+      "vnindexReturn": 0.010550118974455902,
+      "gmdRebased": 125.47416612164814,
+      "vnindexRebased": 101.08288738444078
+    },
+    {
+      "date": "2022-09-02",
+      "sourceDate": "2022-08-31",
+      "gmd": 37.48,
+      "vnindex": 1280.51,
+      "gmdReturn": -0.02319520458691693,
+      "vnindexReturn": -0.0016061501516485555,
+      "gmdRebased": 122.5637671680837,
+      "vnindexRebased": 100.92053308953919
+    },
+    {
+      "date": "2022-09-09",
+      "sourceDate": "2022-09-09",
+      "gmd": 36.52,
+      "vnindex": 1248.78,
+      "gmdReturn": -0.025613660618996614,
+      "vnindexReturn": -0.024779189541667024,
+      "gmdRebased": 119.4244604316547,
+      "vnindexRebased": 98.41980407146742
+    },
+    {
+      "date": "2022-09-16",
+      "sourceDate": "2022-09-16",
+      "gmd": 36.16,
+      "vnindex": 1234.03,
+      "gmdReturn": -0.009857612267251015,
+      "vnindexReturn": -0.011811528051378195,
+      "gmdRebased": 118.24722040549378,
+      "vnindexRebased": 97.25731579486614
+    },
+    {
+      "date": "2022-09-23",
+      "sourceDate": "2022-09-23",
+      "gmd": 35.93,
+      "vnindex": 1203.28,
+      "gmdReturn": -0.006360619469026441,
+      "vnindexReturn": -0.024918356928113616,
+      "gmdRebased": 117.49509483322433,
+      "vnindexRebased": 94.83382328601941
+    },
+    {
+      "date": "2022-09-30",
+      "sourceDate": "2022-09-30",
+      "gmd": 35.42,
+      "vnindex": 1132.11,
+      "gmdReturn": -0.014194266629557473,
+      "vnindexReturn": -0.05914666578020089,
+      "gmdRebased": 115.82733812949641,
+      "vnindexRebased": 89.2247188354626
+    },
+    {
+      "date": "2022-10-07",
+      "sourceDate": "2022-10-07",
+      "gmd": 35.89,
+      "vnindex": 1035.91,
+      "gmdReturn": 0.013269339356295928,
+      "vnindexReturn": -0.0849740749573803,
+      "gmdRebased": 117.36429038587313,
+      "vnindexRebased": 81.64293088908681
+    },
+    {
+      "date": "2022-10-14",
+      "sourceDate": "2022-10-14",
+      "gmd": 36.08,
+      "vnindex": 1061.85,
+      "gmdReturn": 0.00529395374756203,
+      "vnindexReturn": 0.025040785396414522,
+      "gmdRebased": 117.98561151079137,
+      "vnindexRebased": 83.68733400061473
+    },
+    {
+      "date": "2022-10-21",
+      "sourceDate": "2022-10-21",
+      "gmd": 34.79,
+      "vnindex": 1019.82,
+      "gmdReturn": -0.0357538802660754,
+      "vnindexReturn": -0.03958186184489321,
+      "gmdRebased": 113.76716808371485,
+      "vnindexRebased": 80.37483350803497
+    },
+    {
+      "date": "2022-10-28",
+      "sourceDate": "2022-10-28",
+      "gmd": 35.1,
+      "vnindex": 1027.36,
+      "gmdReturn": 0.008910606496119744,
+      "vnindexReturn": 0.007393461591260975,
+      "gmdRebased": 114.78090255068673,
+      "vnindexRebased": 80.96908175248063
+    },
+    {
+      "date": "2022-11-04",
+      "sourceDate": "2022-11-04",
+      "gmd": 36.84,
+      "vnindex": 997.15,
+      "gmdReturn": 0.04957264957264962,
+      "vnindexReturn": -0.029405466438249372,
+      "gmdRebased": 120.47089601046437,
+      "vnindexRebased": 78.58814813647219
+    },
+    {
+      "date": "2022-11-11",
+      "sourceDate": "2022-11-11",
+      "gmd": 33.51,
+      "vnindex": 954.53,
+      "gmdReturn": -0.09039087947882751,
+      "vnindexReturn": -0.042741814170385584,
+      "gmdRebased": 109.58142576847614,
+      "vnindexRebased": 75.22914811282836
+    },
+    {
+      "date": "2022-11-18",
+      "sourceDate": "2022-11-18",
+      "gmd": 32.0,
+      "vnindex": 969.33,
+      "gmdReturn": -0.045061175768427275,
+      "vnindexReturn": 0.015505012938304752,
+      "gmdRebased": 104.64355788096795,
+      "vnindexRebased": 76.3955770276554
+    },
+    {
+      "date": "2022-11-25",
+      "sourceDate": "2022-11-25",
+      "gmd": 34.79,
+      "vnindex": 971.46,
+      "gmdReturn": 0.08718749999999997,
+      "vnindexReturn": 0.002197394076320691,
+      "gmdRebased": 113.76716808371485,
+      "vnindexRebased": 76.56344821607308
+    },
+    {
+      "date": "2022-12-02",
+      "sourceDate": "2022-12-02",
+      "gmd": 35.55,
+      "vnindex": 1080.01,
+      "gmdReturn": 0.021845357861454362,
+      "vnindexReturn": 0.1117390319724949,
+      "gmdRebased": 116.25245258338784,
+      "vnindexRebased": 85.11857380421334
+    },
+    {
+      "date": "2022-12-09",
+      "sourceDate": "2022-12-09",
+      "gmd": 36.04,
+      "vnindex": 1051.81,
+      "gmdReturn": 0.013783403656821402,
+      "vnindexReturn": -0.026110869343802467,
+      "gmdRebased": 117.85480706344016,
+      "vnindexRebased": 82.89605384488071
+    },
+    {
+      "date": "2022-12-16",
+      "sourceDate": "2022-12-16",
+      "gmd": 35.55,
+      "vnindex": 1052.48,
+      "gmdReturn": -0.0135960044395117,
+      "vnindexReturn": 0.0006369971762960613,
+      "gmdRebased": 116.25245258338784,
+      "vnindexRebased": 82.94885839710601
+    },
+    {
+      "date": "2022-12-23",
+      "sourceDate": "2022-12-23",
+      "gmd": 34.79,
+      "vnindex": 1020.34,
+      "gmdReturn": -0.02137834036568209,
+      "vnindexReturn": -0.03053739738522343,
+      "gmdRebased": 113.76716808371485,
+      "vnindexRebased": 80.41581614558294
+    },
+    {
+      "date": "2022-12-30",
+      "sourceDate": "2022-12-30",
+      "gmd": 34.34,
+      "vnindex": 1007.09,
+      "gmdReturn": -0.012934751365334729,
+      "vnindexReturn": -0.012985867455946098,
+      "gmdRebased": 112.29561805101376,
+      "vnindexRebased": 79.37154701575467
+    },
+    {
+      "date": "2023-01-06",
+      "sourceDate": "2023-01-06",
+      "gmd": 35.25,
+      "vnindex": 1051.44,
+      "gmdReturn": 0.02649970879440877,
+      "vnindexReturn": 0.044037772195136604,
+      "gmdRebased": 115.27141922825376,
+      "vnindexRebased": 82.86689312201005
+    },
+    {
+      "date": "2023-01-13",
+      "sourceDate": "2023-01-13",
+      "gmd": 36.12,
+      "vnindex": 1060.17,
+      "gmdReturn": 0.024680851063829667,
+      "vnindexReturn": 0.008302898881533904,
+      "gmdRebased": 118.11641595814257,
+      "vnindexRebased": 83.55492855622899
+    },
+    {
+      "date": "2023-01-20",
+      "sourceDate": "2023-01-19",
+      "gmd": 38.65,
+      "vnindex": 1108.08,
+      "gmdReturn": 0.0700442967884829,
+      "vnindexReturn": 0.045190865615891695,
+      "gmdRebased": 126.38979725310662,
+      "vnindexRebased": 87.33084810415896
+    },
+    {
+      "date": "2023-01-27",
+      "sourceDate": "2023-01-27",
+      "gmd": 39.26,
+      "vnindex": 1117.1,
+      "gmdReturn": 0.01578266494178515,
+      "vnindexReturn": 0.008140206483286283,
+      "gmdRebased": 128.38456507521258,
+      "vnindexRebased": 88.04173924008732
+    },
+    {
+      "date": "2023-02-03",
+      "sourceDate": "2023-02-03",
+      "gmd": 41.3,
+      "vnindex": 1077.15,
+      "gmdReturn": 0.05196128374936326,
+      "vnindexReturn": -0.03576224151821661,
+      "gmdRebased": 135.05559189012425,
+      "vnindexRebased": 84.89316929769947
+    },
+    {
+      "date": "2023-02-10",
+      "sourceDate": "2023-02-10",
+      "gmd": 39.79,
+      "vnindex": 1055.3,
+      "gmdReturn": -0.036561743341404274,
+      "vnindexReturn": -0.020285011372603745,
+      "gmdRebased": 130.1177240026161,
+      "vnindexRebased": 83.17111039303926
+    },
+    {
+      "date": "2023-02-17",
+      "sourceDate": "2023-02-17",
+      "gmd": 39.41,
+      "vnindex": 1059.31,
+      "gmdReturn": -0.009550138225684957,
+      "vnindexReturn": 0.0037998673363024427,
+      "gmdRebased": 128.8750817527796,
+      "vnindexRebased": 83.48714957874577
+    },
+    {
+      "date": "2023-02-24",
+      "sourceDate": "2023-02-24",
+      "gmd": 38.96,
+      "vnindex": 1039.56,
+      "gmdReturn": -0.011418421720375438,
+      "vnindexReturn": -0.018644211798246046,
+      "gmdRebased": 127.4035317200785,
+      "vnindexRebased": 81.9305974795678
+    },
+    {
+      "date": "2023-03-03",
+      "sourceDate": "2023-03-03",
+      "gmd": 37.14,
+      "vnindex": 1024.77,
+      "gmdReturn": -0.04671457905544152,
+      "vnindexReturn": -0.01422717303474541,
+      "gmdRebased": 121.45192936559843,
+      "vnindexRebased": 80.76495669238591
+    },
+    {
+      "date": "2023-03-10",
+      "sourceDate": "2023-03-10",
+      "gmd": 38.58,
+      "vnindex": 1053.0,
+      "gmdReturn": 0.03877221324717284,
+      "vnindexReturn": 0.02754764483737815,
+      "gmdRebased": 126.160889470242,
+      "vnindexRebased": 82.98984103465398
+    },
+    {
+      "date": "2023-03-17",
+      "sourceDate": "2023-03-17",
+      "gmd": 37.22,
+      "vnindex": 1045.14,
+      "gmdReturn": -0.035251425609123865,
+      "vnindexReturn": -0.007464387464387379,
+      "gmdRebased": 121.71353826030085,
+      "vnindexRebased": 82.37037270556341
+    },
+    {
+      "date": "2023-03-24",
+      "sourceDate": "2023-03-24",
+      "gmd": 37.67,
+      "vnindex": 1046.79,
+      "gmdReturn": 0.01209027404621188,
+      "vnindexReturn": 0.0015787358631378368,
+      "gmdRebased": 123.18508829300197,
+      "vnindexRebased": 82.5004137670137
+    },
+    {
+      "date": "2023-03-31",
+      "sourceDate": "2023-03-31",
+      "gmd": 38.96,
+      "vnindex": 1064.64,
+      "gmdReturn": 0.0342447571011415,
+      "vnindexReturn": 0.01705213079987411,
+      "gmdRebased": 127.4035317200785,
+      "vnindexRebased": 83.90722161361255
+    },
+    {
+      "date": "2023-04-07",
+      "sourceDate": "2023-04-07",
+      "gmd": 39.71,
+      "vnindex": 1069.71,
+      "gmdReturn": 0.019250513347022657,
+      "vnindexReturn": 0.004762173128944891,
+      "gmdRebased": 129.8561151079137,
+      "vnindexRebased": 84.30680232970532
+    },
+    {
+      "date": "2023-04-14",
+      "sourceDate": "2023-04-14",
+      "gmd": 40.69,
+      "vnindex": 1052.89,
+      "gmdReturn": 0.02467892218584722,
+      "vnindexReturn": -0.015723887782669976,
+      "gmdRebased": 133.06082406801832,
+      "vnindexRebased": 82.9811716305573
+    },
+    {
+      "date": "2023-04-21",
+      "sourceDate": "2023-04-21",
+      "gmd": 40.01,
+      "vnindex": 1042.91,
+      "gmdReturn": -0.016711722782010274,
+      "vnindexReturn": -0.009478672985781977,
+      "gmdRebased": 130.83714846304775,
+      "vnindexRebased": 82.19462024069419
+    },
+    {
+      "date": "2023-04-28",
+      "sourceDate": "2023-04-28",
+      "gmd": 39.79,
+      "vnindex": 1049.12,
+      "gmdReturn": -0.005498625343664076,
+      "vnindexReturn": 0.005954492717492155,
+      "gmdRebased": 130.1177240026161,
+      "vnindexRebased": 82.68404750833444
+    },
+    {
+      "date": "2023-05-05",
+      "sourceDate": "2023-05-05",
+      "gmd": 37.82,
+      "vnindex": 1040.31,
+      "gmdReturn": -0.049509927117366126,
+      "vnindexReturn": -0.008397514107061133,
+      "gmdRebased": 123.675604970569,
+      "vnindexRebased": 81.9897070529543
+    },
+    {
+      "date": "2023-05-12",
+      "sourceDate": "2023-05-12",
+      "gmd": 37.14,
+      "vnindex": 1066.9,
+      "gmdReturn": -0.017979904812268632,
+      "vnindexReturn": 0.02555968893887406,
+      "gmdRebased": 121.45192936559843,
+      "vnindexRebased": 84.08533846141722
+    },
+    {
+      "date": "2023-05-19",
+      "sourceDate": "2023-05-19",
+      "gmd": 38.12,
+      "vnindex": 1067.07,
+      "gmdReturn": 0.026386645126548203,
+      "vnindexReturn": 0.0001593401443433784,
+      "gmdRebased": 124.65663832570306,
+      "vnindexRebased": 84.09873663138482
+    },
+    {
+      "date": "2023-05-26",
+      "sourceDate": "2023-05-26",
+      "gmd": 37.52,
+      "vnindex": 1063.76,
+      "gmdReturn": -0.015739769150052263,
+      "vnindexReturn": -0.0031019520743718054,
+      "gmdRebased": 122.69457161543494,
+      "vnindexRebased": 83.83786638083905
+    },
+    {
+      "date": "2023-06-02",
+      "sourceDate": "2023-06-02",
+      "gmd": 38.88,
+      "vnindex": 1090.84,
+      "gmdReturn": 0.036247334754797356,
+      "vnindexReturn": 0.025456869970670093,
+      "gmdRebased": 127.14192282537608,
+      "vnindexRebased": 85.97211604391447
+    },
+    {
+      "date": "2023-06-09",
+      "sourceDate": "2023-06-09",
+      "gmd": 38.88,
+      "vnindex": 1107.53,
+      "gmdReturn": 0.0,
+      "vnindexReturn": 0.015300135675259563,
+      "gmdRebased": 127.14192282537608,
+      "vnindexRebased": 87.28750108367551
+    },
+    {
+      "date": "2023-06-16",
+      "sourceDate": "2023-06-16",
+      "gmd": 38.27,
+      "vnindex": 1115.22,
+      "gmdReturn": -0.01568930041152261,
+      "vnindexReturn": 0.006943378508934339,
+      "gmdRebased": 125.14715500327014,
+      "vnindexRebased": 87.8935712427985
+    },
+    {
+      "date": "2023-06-23",
+      "sourceDate": "2023-06-23",
+      "gmd": 39.86,
+      "vnindex": 1129.38,
+      "gmdReturn": 0.04154690357982749,
+      "vnindexReturn": 0.012697046322698746,
+      "gmdRebased": 130.34663178548072,
+      "vnindexRebased": 89.00955998833572
+    },
+    {
+      "date": "2023-06-30",
+      "sourceDate": "2023-06-30",
+      "gmd": 39.26,
+      "vnindex": 1120.18,
+      "gmdReturn": -0.015052684395383875,
+      "vnindexReturn": -0.00814606244133953,
+      "gmdRebased": 128.38456507521258,
+      "vnindexRebased": 88.28448255479458
+    },
+    {
+      "date": "2023-07-07",
+      "sourceDate": "2023-07-07",
+      "gmd": 42.21,
+      "vnindex": 1138.07,
+      "gmdReturn": 0.07514009169638314,
+      "vnindexReturn": 0.015970647574496732,
+      "gmdRebased": 138.0313930673643,
+      "vnindexRebased": 89.69444291197402
+    },
+    {
+      "date": "2023-07-14",
+      "sourceDate": "2023-07-14",
+      "gmd": 43.12,
+      "vnindex": 1168.4,
+      "gmdReturn": 0.021558872305140975,
+      "vnindexReturn": 0.0266503817867092,
+      "gmdRebased": 141.0071942446043,
+      "vnindexRebased": 92.08483405972433
+    },
+    {
+      "date": "2023-07-21",
+      "sourceDate": "2023-07-21",
+      "gmd": 43.49,
+      "vnindex": 1185.9,
+      "gmdReturn": 0.008580705009276546,
+      "vnindexReturn": 0.01497774734679913,
+      "gmdRebased": 142.21713538260303,
+      "vnindexRebased": 93.46405743874278
+    },
+    {
+      "date": "2023-07-28",
+      "sourceDate": "2023-07-28",
+      "gmd": 43.64,
+      "vnindex": 1207.67,
+      "gmdReturn": 0.0034490687514370233,
+      "vnindexReturn": 0.018357365713803864,
+      "gmdRebased": 142.70765206017006,
+      "vnindexRebased": 95.17981132224176
+    },
+    {
+      "date": "2023-08-04",
+      "sourceDate": "2023-08-04",
+      "gmd": 43.87,
+      "vnindex": 1225.98,
+      "gmdReturn": 0.005270394133822132,
+      "vnindexReturn": 0.015161426548643275,
+      "gmdRebased": 143.4597776324395,
+      "vnindexRebased": 96.62287304051766
+    },
+    {
+      "date": "2023-08-11",
+      "sourceDate": "2023-08-11",
+      "gmd": 41.75,
+      "vnindex": 1232.21,
+      "gmdReturn": -0.048324595395486614,
+      "vnindexReturn": 0.005081648966541064,
+      "gmdRebased": 136.52714192282536,
+      "vnindexRebased": 97.11387656344822
+    },
+    {
+      "date": "2023-08-18",
+      "sourceDate": "2023-08-18",
+      "gmd": 39.48,
+      "vnindex": 1177.99,
+      "gmdReturn": -0.05437125748503002,
+      "vnindexReturn": -0.04400223987794294,
+      "gmdRebased": 129.10398953564422,
+      "vnindexRebased": 92.84064847142643
+    },
+    {
+      "date": "2023-08-25",
+      "sourceDate": "2023-08-25",
+      "gmd": 41.83,
+      "vnindex": 1183.37,
+      "gmdReturn": 0.059523809523809534,
+      "vnindexReturn": 0.00456710158829865,
+      "gmdRebased": 136.78875081752778,
+      "vnindexRebased": 93.26466114451897
+    },
+    {
+      "date": "2023-09-01",
+      "sourceDate": "2023-08-31",
+      "gmd": 47.43,
+      "vnindex": 1224.05,
+      "gmdReturn": 0.1338752091800144,
+      "vnindexReturn": 0.034376399604519436,
+      "gmdRebased": 155.10137344669718,
+      "vnindexRebased": 96.47076440500304
+    },
+    {
+      "date": "2023-09-08",
+      "sourceDate": "2023-09-08",
+      "gmd": 49.02,
+      "vnindex": 1241.48,
+      "gmdReturn": 0.0335230866540166,
+      "vnindexReturn": 0.014239614394836897,
+      "gmdRebased": 160.30085022890782,
+      "vnindexRebased": 97.84447089050543
+    },
+    {
+      "date": "2023-09-15",
+      "sourceDate": "2023-09-15",
+      "gmd": 48.41,
+      "vnindex": 1227.36,
+      "gmdReturn": -0.012443900448796508,
+      "vnindexReturn": -0.011373521925443941,
+      "gmdRebased": 158.3060824068018,
+      "vnindexRebased": 96.73163465554882
+    },
+    {
+      "date": "2023-09-22",
+      "sourceDate": "2023-09-22",
+      "gmd": 49.92,
+      "vnindex": 1193.05,
+      "gmdReturn": 0.03119190249948378,
+      "vnindexReturn": -0.027954308434363195,
+      "gmdRebased": 163.24395029431003,
+      "vnindexRebased": 94.02756870502746
+    },
+    {
+      "date": "2023-09-29",
+      "sourceDate": "2023-09-29",
+      "gmd": 51.72,
+      "vnindex": 1154.15,
+      "gmdReturn": 0.03605769230769229,
+      "vnindexReturn": -0.032605506894094805,
+      "gmdRebased": 169.13015042511446,
+      "vnindexRebased": 90.96175216538072
+    },
+    {
+      "date": "2023-10-06",
+      "sourceDate": "2023-10-06",
+      "gmd": 50.7,
+      "vnindex": 1128.54,
+      "gmdReturn": -0.019721577726218076,
+      "vnindexReturn": -0.02218949010094018,
+      "gmdRebased": 165.79463701765863,
+      "vnindexRebased": 88.94335726614283
+    },
+    {
+      "date": "2023-10-13",
+      "sourceDate": "2023-10-13",
+      "gmd": 51.56,
+      "vnindex": 1154.73,
+      "gmdReturn": 0.01696252465483239,
+      "vnindexReturn": 0.02320697538412464,
+      "gmdRebased": 168.60693263570963,
+      "vnindexRebased": 91.00746356879961
+    },
+    {
+      "date": "2023-10-20",
+      "sourceDate": "2023-10-20",
+      "gmd": 49.92,
+      "vnindex": 1108.03,
+      "gmdReturn": -0.031807602792862655,
+      "vnindexReturn": -0.04044235448979416,
+      "gmdRebased": 163.24395029431003,
+      "vnindexRebased": 87.32690746593319
+    },
+    {
+      "date": "2023-10-27",
+      "sourceDate": "2023-10-27",
+      "gmd": 48.75,
+      "vnindex": 1060.62,
+      "gmdReturn": -0.0234375,
+      "vnindexReturn": -0.042787650153876755,
+      "gmdRebased": 159.41792020928713,
+      "vnindexRebased": 83.59039430026087
+    },
+    {
+      "date": "2023-11-03",
+      "sourceDate": "2023-11-03",
+      "gmd": 50.7,
+      "vnindex": 1076.78,
+      "gmdReturn": 0.040000000000000036,
+      "vnindexReturn": 0.015236371179121688,
+      "gmdRebased": 165.79463701765863,
+      "vnindexRebased": 84.86400857482879
+    },
+    {
+      "date": "2023-11-10",
+      "sourceDate": "2023-11-10",
+      "gmd": 53.75,
+      "vnindex": 1101.68,
+      "gmdReturn": 0.06015779092702167,
+      "vnindexReturn": 0.023124500826538386,
+      "gmdRebased": 175.76847612818838,
+      "vnindexRebased": 86.82644641126078
+    },
+    {
+      "date": "2023-11-17",
+      "sourceDate": "2023-11-17",
+      "gmd": 54.6,
+      "vnindex": 1101.19,
+      "gmdReturn": 0.015813953488372112,
+      "vnindexReturn": -0.000444775252341878,
+      "gmdRebased": 178.5480706344016,
+      "vnindexRebased": 86.78782815664826
+    },
+    {
+      "date": "2023-11-24",
+      "sourceDate": "2023-11-24",
+      "gmd": 53.75,
+      "vnindex": 1095.61,
+      "gmdReturn": -0.015567765567765623,
+      "vnindexReturn": -0.0050672454344846685,
+      "gmdRebased": 175.76847612818838,
+      "vnindexRebased": 86.34805293065264
+    },
+    {
+      "date": "2023-12-01",
+      "sourceDate": "2023-12-01",
+      "gmd": 54.76,
+      "vnindex": 1102.16,
+      "gmdReturn": 0.018790697674418544,
+      "vnindexReturn": 0.005978404724308994,
+      "gmdRebased": 179.0712884238064,
+      "vnindexRebased": 86.86427653822815
+    },
+    {
+      "date": "2023-12-08",
+      "sourceDate": "2023-12-08",
+      "gmd": 54.92,
+      "vnindex": 1124.44,
+      "gmdReturn": 0.0029218407596787177,
+      "vnindexReturn": 0.020214850838353726,
+      "gmdRebased": 179.59450621321128,
+      "vnindexRebased": 88.62022493162993
+    },
+    {
+      "date": "2023-12-15",
+      "sourceDate": "2023-12-15",
+      "gmd": 53.04,
+      "vnindex": 1102.3,
+      "gmdReturn": -0.03423160961398397,
+      "vnindexReturn": -0.01968980114545915,
+      "gmdRebased": 173.4466971877044,
+      "vnindexRebased": 86.87531032526027
+    },
+    {
+      "date": "2023-12-22",
+      "sourceDate": "2023-12-22",
+      "gmd": 53.28,
+      "vnindex": 1103.06,
+      "gmdReturn": 0.004524886877828038,
+      "vnindexReturn": 0.0006894674770934195,
+      "gmdRebased": 174.23152387181165,
+      "vnindexRebased": 86.93520802629195
+    },
+    {
+      "date": "2023-12-29",
+      "sourceDate": "2023-12-29",
+      "gmd": 54.99,
+      "vnindex": 1129.93,
+      "gmdReturn": 0.03209459459459452,
+      "vnindexReturn": 0.024359509002230162,
+      "gmdRebased": 179.82341399607589,
+      "vnindexRebased": 89.05290700881916
+    },
+    {
+      "date": "2024-01-05",
+      "sourceDate": "2024-01-05",
+      "gmd": 55.46,
+      "vnindex": 1154.68,
+      "gmdReturn": 0.008547008547008517,
+      "vnindexReturn": 0.021904011752940544,
+      "gmdRebased": 181.3603662524526,
+      "vnindexRebased": 91.00352293057384
+    },
+    {
+      "date": "2024-01-12",
+      "sourceDate": "2024-01-12",
+      "gmd": 54.84,
+      "vnindex": 1154.7,
+      "gmdReturn": -0.01117922827262885,
+      "vnindexReturn": 1.732081615690717e-05,
+      "gmdRebased": 179.33289731850886,
+      "vnindexRebased": 91.00509918586414
+    },
+    {
+      "date": "2024-01-19",
+      "sourceDate": "2024-01-19",
+      "gmd": 54.06,
+      "vnindex": 1181.5,
+      "gmdReturn": -0.01422319474835887,
+      "vnindexReturn": 0.02320949164285091,
+      "gmdRebased": 176.78221059516025,
+      "vnindexRebased": 93.11728127487528
+    },
+    {
+      "date": "2024-01-26",
+      "sourceDate": "2024-01-26",
+      "gmd": 54.68,
+      "vnindex": 1175.67,
+      "gmdReturn": 0.01146873843877172,
+      "vnindexReturn": -0.00493440541684298,
+      "gmdRebased": 178.80967952910402,
+      "vnindexRebased": 92.65780285775085
+    },
+    {
+      "date": "2024-02-02",
+      "sourceDate": "2024-02-02",
+      "gmd": 53.67,
+      "vnindex": 1172.55,
+      "gmdReturn": -0.018471104608631994,
+      "vnindexReturn": -0.0026538059149252557,
+      "gmdRebased": 175.50686723348596,
+      "vnindexRebased": 92.41190703246298
+    },
+    {
+      "date": "2024-02-09",
+      "sourceDate": "2024-02-07",
+      "gmd": 54.21,
+      "vnindex": 1198.53,
+      "gmdReturn": 0.010061486864169966,
+      "vnindexReturn": 0.02215683766150689,
+      "gmdRebased": 177.27272727272728,
+      "vnindexRebased": 94.45946265457154
+    },
+    {
+      "date": "2024-02-16",
+      "sourceDate": "2024-02-16",
+      "gmd": 54.45,
+      "vnindex": 1209.7,
+      "gmdReturn": 0.004427227448810189,
+      "vnindexReturn": 0.009319750027116713,
+      "gmdRebased": 178.05755395683457,
+      "vnindexRebased": 95.3398012342079
+    },
+    {
+      "date": "2024-02-23",
+      "sourceDate": "2024-02-23",
+      "gmd": 54.45,
+      "vnindex": 1212.0,
+      "gmdReturn": 0.0,
+      "vnindexReturn": 0.0019012978424401972,
+      "gmdRebased": 178.05755395683457,
+      "vnindexRebased": 95.52107059259318
+    },
+    {
+      "date": "2024-03-01",
+      "sourceDate": "2024-03-01",
+      "gmd": 62.79,
+      "vnindex": 1258.28,
+      "gmdReturn": 0.1531680440771348,
+      "vnindexReturn": 0.03818481848184807,
+      "gmdRebased": 205.33028122956182,
+      "vnindexRebased": 99.16852533436315
+    },
+    {
+      "date": "2024-03-08",
+      "sourceDate": "2024-03-08",
+      "gmd": 61.08,
+      "vnindex": 1247.35,
+      "gmdReturn": -0.02723363592928807,
+      "vnindexReturn": -0.008686460883110314,
+      "gmdRebased": 199.73839110529758,
+      "vnindexRebased": 98.30710181821047
+    },
+    {
+      "date": "2024-03-15",
+      "sourceDate": "2024-03-15",
+      "gmd": 62.4,
+      "vnindex": 1263.78,
+      "gmdReturn": 0.0216110019646365,
+      "vnindexReturn": 0.013171924479897346,
+      "gmdRebased": 204.05493786788753,
+      "vnindexRebased": 99.60199553919753
+    },
+    {
+      "date": "2024-03-22",
+      "sourceDate": "2024-03-22",
+      "gmd": 61.31,
+      "vnindex": 1281.8,
+      "gmdReturn": -0.017467948717948656,
+      "vnindexReturn": 0.014258810868980287,
+      "gmdRebased": 200.49051667756706,
+      "vnindexRebased": 101.02220155576398
+    },
+    {
+      "date": "2024-03-29",
+      "sourceDate": "2024-03-29",
+      "gmd": 62.17,
+      "vnindex": 1284.09,
+      "gmdReturn": 0.014027075517859977,
+      "vnindexReturn": 0.0017865501638321124,
+      "gmdRebased": 203.30281229561805,
+      "vnindexRebased": 101.20268278650411
+    },
+    {
+      "date": "2024-04-05",
+      "sourceDate": "2024-04-05",
+      "gmd": 60.84,
+      "vnindex": 1255.11,
+      "gmdReturn": -0.02139295480135106,
+      "vnindexReturn": -0.022568511552928494,
+      "gmdRebased": 198.95356442119035,
+      "vnindexRebased": 98.91868887084952
+    },
+    {
+      "date": "2024-04-12",
+      "sourceDate": "2024-04-12",
+      "gmd": 63.73,
+      "vnindex": 1276.6,
+      "gmdReturn": 0.04750164365548959,
+      "vnindexReturn": 0.01712200524256846,
+      "gmdRebased": 208.40418574231526,
+      "vnindexRebased": 100.6123751802842
+    },
+    {
+      "date": "2024-04-19",
+      "sourceDate": "2024-04-19",
+      "gmd": 62.4,
+      "vnindex": 1174.85,
+      "gmdReturn": -0.02086929232700452,
+      "vnindexReturn": -0.07970390098699676,
+      "gmdRebased": 204.05493786788753,
+      "vnindexRebased": 92.59317639084827
+    },
+    {
+      "date": "2024-04-26",
+      "sourceDate": "2024-04-26",
+      "gmd": 65.68,
+      "vnindex": 1209.52,
+      "gmdReturn": 0.0525641025641026,
+      "vnindexReturn": 0.029510150231944587,
+      "gmdRebased": 214.78090255068673,
+      "vnindexRebased": 95.32561493659514
+    },
+    {
+      "date": "2024-05-03",
+      "sourceDate": "2024-05-03",
+      "gmd": 66.69,
+      "vnindex": 1221.03,
+      "gmdReturn": 0.015377588306942691,
+      "vnindexReturn": 0.009516171704477827,
+      "gmdRebased": 218.0837148463048,
+      "vnindexRebased": 96.2327498561667
+    },
+    {
+      "date": "2024-05-10",
+      "sourceDate": "2024-05-10",
+      "gmd": 65.21,
+      "vnindex": 1244.7,
+      "gmdReturn": -0.022192232718548532,
+      "vnindexReturn": 0.01938527308911331,
+      "gmdRebased": 213.24395029430997,
+      "vnindexRebased": 98.09824799224484
+    },
+    {
+      "date": "2024-05-17",
+      "sourceDate": "2024-05-17",
+      "gmd": 66.15,
+      "vnindex": 1273.11,
+      "gmdReturn": 0.01441496702959677,
+      "vnindexReturn": 0.022824777054711864,
+      "gmdRebased": 216.3178548070635,
+      "vnindexRebased": 100.33731863212564
+    },
+    {
+      "date": "2024-05-24",
+      "sourceDate": "2024-05-24",
+      "gmd": 65.13,
+      "vnindex": 1261.93,
+      "gmdReturn": -0.015419501133786984,
+      "vnindexReturn": -0.008781644948197553,
+      "gmdRebased": 212.98234139960758,
+      "vnindexRebased": 99.45619192484416
+    },
+    {
+      "date": "2024-05-31",
+      "sourceDate": "2024-05-31",
+      "gmd": 65.37,
+      "vnindex": 1261.72,
+      "gmdReturn": 0.0036849378166745606,
+      "vnindexReturn": -0.00016641176610432407,
+      "gmdRebased": 213.76716808371486,
+      "vnindexRebased": 99.43964124429593
+    },
+    {
+      "date": "2024-06-07",
+      "sourceDate": "2024-06-07",
+      "gmd": 65.06,
+      "vnindex": 1287.58,
+      "gmdReturn": -0.004742236499923558,
+      "vnindexReturn": 0.02049583108772146,
+      "gmdRebased": 212.75343361674297,
+      "vnindexRebased": 101.47773933466264
+    },
+    {
+      "date": "2024-06-14",
+      "sourceDate": "2024-06-14",
+      "gmd": 64.74,
+      "vnindex": 1279.91,
+      "gmdReturn": -0.004918536735321388,
+      "vnindexReturn": -0.005956911415212929,
+      "gmdRebased": 211.70699803793326,
+      "vnindexRebased": 100.87324543082998
+    },
+    {
+      "date": "2024-06-21",
+      "sourceDate": "2024-06-21",
+      "gmd": 65.06,
+      "vnindex": 1282.02,
+      "gmdReturn": 0.004942848316342507,
+      "vnindexReturn": 0.0016485534139119018,
+      "gmdRebased": 212.75343361674297,
+      "vnindexRebased": 101.03954036395734
+    },
+    {
+      "date": "2024-06-28",
+      "sourceDate": "2024-06-28",
+      "gmd": 64.74,
+      "vnindex": 1245.32,
+      "gmdReturn": -0.004918536735321388,
+      "vnindexReturn": -0.02862669849144328,
+      "gmdRebased": 211.70699803793326,
+      "vnindexRebased": 98.14711190624433
+    },
+    {
+      "date": "2024-07-05",
+      "sourceDate": "2024-07-05",
+      "gmd": 65.21,
+      "vnindex": 1283.04,
+      "gmdReturn": 0.007259808464627815,
+      "vnindexReturn": 0.030289403526804426,
+      "gmdRebased": 213.24395029430997,
+      "vnindexRebased": 101.119929383763
+    },
+    {
+      "date": "2024-07-12",
+      "sourceDate": "2024-07-12",
+      "gmd": 65.52,
+      "vnindex": 1280.75,
+      "gmdReturn": 0.0047538721055053745,
+      "vnindexReturn": -0.0017848235440828253,
+      "gmdRebased": 214.25768476128187,
+      "vnindexRebased": 100.93944815302287
+    },
+    {
+      "date": "2024-07-19",
+      "sourceDate": "2024-07-19",
+      "gmd": 63.12,
+      "vnindex": 1264.78,
+      "gmdReturn": -0.03663003663003661,
+      "vnindexReturn": -0.012469256295139619,
+      "gmdRebased": 206.4094179202093,
+      "vnindexRebased": 99.68080830371288
+    },
+    {
+      "date": "2024-07-26",
+      "sourceDate": "2024-07-26",
+      "gmd": 63.28,
+      "vnindex": 1242.11,
+      "gmdReturn": 0.0025348542458809575,
+      "vnindexReturn": -0.017924065845443482,
+      "gmdRebased": 206.93263570961415,
+      "vnindexRebased": 97.89412293215008
+    },
+    {
+      "date": "2024-08-02",
+      "sourceDate": "2024-08-02",
+      "gmd": 64.88,
+      "vnindex": 1236.6,
+      "gmdReturn": 0.025284450063211006,
+      "vnindexReturn": -0.004436000032203236,
+      "gmdRebased": 212.1648136036625,
+      "vnindexRebased": 97.45986459967057
+    },
+    {
+      "date": "2024-08-09",
+      "sourceDate": "2024-08-09",
+      "gmd": 61.76,
+      "vnindex": 1223.64,
+      "gmdReturn": -0.04808877928483346,
+      "vnindexReturn": -0.01048034934497799,
+      "gmdRebased": 201.96206671026818,
+      "vnindexRebased": 96.43845117155175
+    },
+    {
+      "date": "2024-08-16",
+      "sourceDate": "2024-08-16",
+      "gmd": 63.92,
+      "vnindex": 1252.23,
+      "gmdReturn": 0.03497409326424883,
+      "vnindexReturn": 0.02336471511228777,
+      "gmdRebased": 209.0255068672335,
+      "vnindexRebased": 98.69170810904535
+    },
+    {
+      "date": "2024-08-23",
+      "sourceDate": "2024-08-23",
+      "gmd": 65.92,
+      "vnindex": 1285.32,
+      "gmdReturn": 0.031289111389236623,
+      "vnindexReturn": 0.026424858053232914,
+      "gmdRebased": 215.565729234794,
+      "vnindexRebased": 101.29962248685797
+    },
+    {
+      "date": "2024-08-30",
+      "sourceDate": "2024-08-30",
+      "gmd": 64.48,
+      "vnindex": 1283.87,
+      "gmdReturn": -0.021844660194174748,
+      "vnindexReturn": -0.001128123735723463,
+      "gmdRebased": 210.85676913015044,
+      "vnindexRebased": 101.18534397831071
+    },
+    {
+      "date": "2024-09-06",
+      "sourceDate": "2024-09-06",
+      "gmd": 62.48,
+      "vnindex": 1273.96,
+      "gmdReturn": -0.031017369727047273,
+      "vnindexReturn": -0.007718850039334035,
+      "gmdRebased": 204.31654676258995,
+      "vnindexRebased": 100.40430948196371
+    },
+    {
+      "date": "2024-09-13",
+      "sourceDate": "2024-09-13",
+      "gmd": 61.84,
+      "vnindex": 1251.71,
+      "gmdReturn": -0.010243277848911547,
+      "vnindexReturn": -0.017465226537724865,
+      "gmdRebased": 202.2236756049706,
+      "vnindexRebased": 98.65072547149737
+    },
+    {
+      "date": "2024-09-20",
+      "sourceDate": "2024-09-20",
+      "gmd": 62.8,
+      "vnindex": 1272.04,
+      "gmdReturn": 0.015523932729624823,
+      "vnindexReturn": 0.016241781243259146,
+      "gmdRebased": 205.3629823413996,
+      "vnindexRebased": 100.25298897409425
+    },
+    {
+      "date": "2024-09-27",
+      "sourceDate": "2024-09-27",
+      "gmd": 62.88,
+      "vnindex": 1290.92,
+      "gmdReturn": 0.001273885350318471,
+      "vnindexReturn": 0.014842300556586308,
+      "gmdRebased": 205.62459123610205,
+      "vnindexRebased": 101.7409739681439
+    },
+    {
+      "date": "2024-10-04",
+      "sourceDate": "2024-10-04",
+      "gmd": 61.52,
+      "vnindex": 1270.6,
+      "gmdReturn": -0.021628498727735312,
+      "vnindexReturn": -0.015740712050320793,
+      "gmdRebased": 201.17724002616092,
+      "vnindexRebased": 100.13949859319216
+    },
+    {
+      "date": "2024-10-11",
+      "sourceDate": "2024-10-11",
+      "gmd": 61.52,
+      "vnindex": 1288.39,
+      "gmdReturn": 0.0,
+      "vnindexReturn": 0.014001259247599762,
+      "gmdRebased": 201.17724002616092,
+      "vnindexRebased": 101.54157767392009
+    },
+    {
+      "date": "2024-10-18",
+      "sourceDate": "2024-10-18",
+      "gmd": 57.51,
+      "vnindex": 1285.46,
+      "gmdReturn": -0.06518205461638504,
+      "vnindexReturn": -0.0022741561173247327,
+      "gmdRebased": 188.0640941792021,
+      "vnindexRebased": 101.31065627389013
+    },
+    {
+      "date": "2024-10-25",
+      "sourceDate": "2024-10-25",
+      "gmd": 58.97,
+      "vnindex": 1252.72,
+      "gmdReturn": 0.025386889236654442,
+      "vnindexReturn": -0.025469481741944522,
+      "gmdRebased": 192.83845650752127,
+      "vnindexRebased": 98.73032636365787
+    },
+    {
+      "date": "2024-11-01",
+      "sourceDate": "2024-11-01",
+      "gmd": 60.38,
+      "vnindex": 1254.89,
+      "gmdReturn": 0.02391046294726129,
+      "vnindexReturn": 0.0017322306660707554,
+      "gmdRebased": 197.44931327665142,
+      "vnindexRebased": 98.90135006265616
+    },
+    {
+      "date": "2024-11-08",
+      "sourceDate": "2024-11-08",
+      "gmd": 60.76,
+      "vnindex": 1252.56,
+      "gmdReturn": 0.006293474660483467,
+      "vnindexReturn": -0.001856736447019336,
+      "gmdRebased": 198.6919555264879,
+      "vnindexRebased": 98.7177163213354
+    },
+    {
+      "date": "2024-11-15",
+      "sourceDate": "2024-11-15",
+      "gmd": 61.89,
+      "vnindex": 1218.57,
+      "gmdReturn": 0.018597761685319236,
+      "vnindexReturn": -0.027136424602414277,
+      "gmdRebased": 202.38718116415959,
+      "vnindexRebased": 96.03887045545896
+    },
+    {
+      "date": "2024-11-22",
+      "sourceDate": "2024-11-22",
+      "gmd": 60.29,
+      "vnindex": 1228.1,
+      "gmdReturn": -0.025852318629827176,
+      "vnindexReturn": 0.00782064222818546,
+      "gmdRebased": 197.1550032701112,
+      "vnindexRebased": 96.78995610129016
+    },
+    {
+      "date": "2024-11-29",
+      "sourceDate": "2024-11-29",
+      "gmd": 60.85,
+      "vnindex": 1250.46,
+      "gmdReturn": 0.009288439210482613,
+      "vnindexReturn": 0.018206986401758884,
+      "gmdRebased": 198.98626553302813,
+      "vnindexRebased": 98.55220951585319
+    },
+    {
+      "date": "2024-12-06",
+      "sourceDate": "2024-12-06",
+      "gmd": 63.39,
+      "vnindex": 1270.14,
+      "gmdReturn": 0.041741988496302396,
+      "vnindexReturn": 0.01573820833933115,
+      "gmdRebased": 207.29234793982997,
+      "vnindexRebased": 100.10324472151511
+    },
+    {
+      "date": "2024-12-13",
+      "sourceDate": "2024-12-13",
+      "gmd": 61.98,
+      "vnindex": 1262.57,
+      "gmdReturn": -0.022243256034074843,
+      "vnindexReturn": -0.005959972916371514,
+      "gmdRebased": 202.68149117069981,
+      "vnindexRebased": 99.50663209413396
+    },
+    {
+      "date": "2024-12-20",
+      "sourceDate": "2024-12-20",
+      "gmd": 61.13,
+      "vnindex": 1257.5,
+      "gmdReturn": -0.013714101323007322,
+      "vnindexReturn": -0.004015618935979792,
+      "gmdRebased": 199.9018966644866,
+      "vnindexRebased": 99.10705137804119
+    },
+    {
+      "date": "2024-12-27",
+      "sourceDate": "2024-12-27",
+      "gmd": 62.54,
+      "vnindex": 1275.14,
+      "gmdReturn": 0.02306559790610163,
+      "vnindexReturn": 0.014027833001988066,
+      "gmdRebased": 204.51275343361678,
+      "vnindexRebased": 100.49730854409182
+    },
+    {
+      "date": "2025-01-03",
+      "sourceDate": "2025-01-03",
+      "gmd": 61.89,
+      "vnindex": 1254.59,
+      "gmdReturn": -0.010393348257115465,
+      "vnindexReturn": -0.016115877472277718,
+      "gmdRebased": 202.38718116415959,
+      "vnindexRebased": 98.87770623330154
+    },
+    {
+      "date": "2025-01-10",
+      "sourceDate": "2025-01-10",
+      "gmd": 58.31,
+      "vnindex": 1230.48,
+      "gmdReturn": -0.05784456293423812,
+      "vnindexReturn": -0.01921743358387995,
+      "gmdRebased": 190.6801831262263,
+      "vnindexRebased": 96.97753048083668
+    },
+    {
+      "date": "2025-01-17",
+      "sourceDate": "2025-01-17",
+      "gmd": 58.31,
+      "vnindex": 1249.11,
+      "gmdReturn": 0.0,
+      "vnindexReturn": 0.015140433001755271,
+      "gmdRebased": 190.6801831262263,
+      "vnindexRebased": 98.44581228375748
+    },
+    {
+      "date": "2025-01-24",
+      "sourceDate": "2025-01-24",
+      "gmd": 60.1,
+      "vnindex": 1265.05,
+      "gmdReturn": 0.030697993483107533,
+      "vnindexReturn": 0.012761085893155943,
+      "gmdRebased": 196.53368214519296,
+      "vnindexRebased": 99.70208775013202
+    },
+    {
+      "date": "2025-02-07",
+      "sourceDate": "2025-02-07",
+      "gmd": 58.88,
+      "vnindex": 1275.2,
+      "gmdReturn": -0.02029950083194676,
+      "vnindexReturn": 0.008023398284652927,
+      "gmdRebased": 192.54414650098107,
+      "vnindexRebased": 100.50203730996272
+    },
+    {
+      "date": "2025-02-14",
+      "sourceDate": "2025-02-14",
+      "gmd": 58.03,
+      "vnindex": 1276.08,
+      "gmdReturn": -0.014436141304347894,
+      "vnindexReturn": 0.0006900878293600865,
+      "gmdRebased": 189.76455199476783,
+      "vnindexRebased": 100.57139254273622
+    },
+    {
+      "date": "2025-02-21",
+      "sourceDate": "2025-02-21",
+      "gmd": 58.31,
+      "vnindex": 1296.75,
+      "gmdReturn": 0.004825090470446325,
+      "vnindexReturn": 0.016198044009779977,
+      "gmdRebased": 190.6801831262263,
+      "vnindexRebased": 102.20045238526832
+    },
+    {
+      "date": "2025-02-28",
+      "sourceDate": "2025-02-28",
+      "gmd": 57.09,
+      "vnindex": 1305.36,
+      "gmdReturn": -0.020922654776196148,
+      "vnindexReturn": 0.006639676113360249,
+      "gmdRebased": 186.6906474820144,
+      "vnindexRebased": 102.87903028774541
+    },
+    {
+      "date": "2025-03-07",
+      "sourceDate": "2025-03-07",
+      "gmd": 57.84,
+      "vnindex": 1326.05,
+      "gmdReturn": 0.013137151865475483,
+      "vnindexReturn": 0.015850033707176525,
+      "gmdRebased": 189.1432308698496,
+      "vnindexRebased": 104.5096663855678
+    },
+    {
+      "date": "2025-03-14",
+      "sourceDate": "2025-03-14",
+      "gmd": 54.64,
+      "vnindex": 1326.15,
+      "gmdReturn": -0.05532503457814664,
+      "vnindexReturn": 7.54119377097684e-05,
+      "gmdRebased": 178.6788750817528,
+      "vnindexRebased": 104.51754766201935
+    },
+    {
+      "date": "2025-03-21",
+      "sourceDate": "2025-03-21",
+      "gmd": 55.87,
+      "vnindex": 1321.88,
+      "gmdReturn": 0.02251098096632509,
+      "vnindexReturn": -0.003219846925310077,
+      "gmdRebased": 182.7011118378025,
+      "vnindexRebased": 104.18101715753885
+    },
+    {
+      "date": "2025-03-28",
+      "sourceDate": "2025-03-28",
+      "gmd": 54.55,
+      "vnindex": 1317.46,
+      "gmdReturn": -0.02362627528190442,
+      "vnindexReturn": -0.003343722576935937,
+      "gmdRebased": 178.38456507521258,
+      "vnindexRebased": 103.83266473838104
+    },
+    {
+      "date": "2025-04-04",
+      "sourceDate": "2025-04-04",
+      "gmd": 45.85,
+      "vnindex": 1210.67,
+      "gmdReturn": -0.15948670944087984,
+      "vnindexReturn": -0.0810574894114432,
+      "gmdRebased": 149.9345977763244,
+      "vnindexRebased": 95.41624961578779
+    },
+    {
+      "date": "2025-04-11",
+      "sourceDate": "2025-04-11",
+      "gmd": 43.26,
+      "vnindex": 1222.46,
+      "gmdReturn": -0.05648854961832073,
+      "vnindexReturn": 0.009738409310547036,
+      "gmdRebased": 141.46500981033356,
+      "vnindexRebased": 96.34545210942365
+    },
+    {
+      "date": "2025-04-18",
+      "sourceDate": "2025-04-18",
+      "gmd": 45.76,
+      "vnindex": 1219.12,
+      "gmdReturn": 0.057790106333795555,
+      "vnindexReturn": -0.002732195736465881,
+      "gmdRebased": 149.64028776978418,
+      "vnindexRebased": 96.0822174759424
+    },
+    {
+      "date": "2025-04-25",
+      "sourceDate": "2025-04-25",
+      "gmd": 47.97,
+      "vnindex": 1229.23,
+      "gmdReturn": 0.048295454545454586,
+      "vnindexReturn": 0.008292866986022718,
+      "gmdRebased": 156.86723348593853,
+      "vnindexRebased": 96.8790145251925
+    },
+    {
+      "date": "2025-05-02",
+      "sourceDate": "2025-04-29",
+      "gmd": 49.85,
+      "vnindex": 1226.3,
+      "gmdReturn": 0.03919116114238075,
+      "vnindexReturn": -0.0023836059972504042,
+      "gmdRebased": 163.01504251144542,
+      "vnindexRebased": 96.64809312516255
+    },
+    {
+      "date": "2025-05-09",
+      "sourceDate": "2025-05-09",
+      "gmd": 49.85,
+      "vnindex": 1267.3,
+      "gmdReturn": 0.0,
+      "vnindexReturn": 0.03343390687433745,
+      "gmdRebased": 163.01504251144542,
+      "vnindexRebased": 99.87941647029153
+    },
+    {
+      "date": "2025-05-16",
+      "sourceDate": "2025-05-16",
+      "gmd": 50.69,
+      "vnindex": 1301.39,
+      "gmdReturn": 0.01685055165496485,
+      "vnindexReturn": 0.026899708040716508,
+      "gmdRebased": 165.7619359058208,
+      "vnindexRebased": 102.56614361261951
+    },
+    {
+      "date": "2025-05-23",
+      "sourceDate": "2025-05-23",
+      "gmd": 50.13,
+      "vnindex": 1314.46,
+      "gmdReturn": -0.011047543894259104,
+      "vnindexReturn": 0.010043107754016845,
+      "gmdRebased": 163.93067364290388,
+      "vnindexRebased": 103.59622644483501
+    },
+    {
+      "date": "2025-05-30",
+      "sourceDate": "2025-05-30",
+      "gmd": 56.24,
+      "vnindex": 1332.6,
+      "gmdReturn": 0.12188310392978252,
+      "vnindexReturn": 0.013800343867443665,
+      "gmdRebased": 183.9110529758012,
+      "vnindexRebased": 105.02588999314328
+    },
+    {
+      "date": "2025-06-06",
+      "sourceDate": "2025-06-06",
+      "gmd": 54.08,
+      "vnindex": 1329.89,
+      "gmdReturn": -0.038406827880512195,
+      "vnindexReturn": -0.0020336184901694754,
+      "gmdRebased": 176.84761281883584,
+      "vnindexRebased": 104.81230740130674
+    },
+    {
+      "date": "2025-06-13",
+      "sourceDate": "2025-06-13",
+      "gmd": 52.29,
+      "vnindex": 1315.49,
+      "gmdReturn": -0.03309911242603547,
+      "vnindexReturn": -0.01082796321500279,
+      "gmdRebased": 170.99411379986918,
+      "vnindexRebased": 103.67740359228581
+    },
+    {
+      "date": "2025-06-20",
+      "sourceDate": "2025-06-20",
+      "gmd": 52.57,
+      "vnindex": 1349.35,
+      "gmdReturn": 0.0053547523427042165,
+      "vnindexReturn": 0.025739458300709117,
+      "gmdRebased": 171.90974493132768,
+      "vnindexRebased": 106.34600379877526
+    },
+    {
+      "date": "2025-06-27",
+      "sourceDate": "2025-06-27",
+      "gmd": 52.1,
+      "vnindex": 1371.44,
+      "gmdReturn": -0.00894046033859619,
+      "vnindexReturn": 0.016370845221773456,
+      "gmdRebased": 170.37279267495094,
+      "vnindexRebased": 108.08697776691913
+    },
+    {
+      "date": "2025-07-04",
+      "sourceDate": "2025-07-04",
+      "gmd": 56.9,
+      "vnindex": 1386.97,
+      "gmdReturn": 0.09213051823416496,
+      "vnindexReturn": 0.011323863967800163,
+      "gmdRebased": 186.06932635709614,
+      "vnindexRebased": 109.31093999984239
+    },
+    {
+      "date": "2025-07-11",
+      "sourceDate": "2025-07-11",
+      "gmd": 58.5,
+      "vnindex": 1457.76,
+      "gmdReturn": 0.02811950790861162,
+      "vnindexReturn": 0.05103931591887356,
+      "gmdRebased": 191.30150425114454,
+      "vnindexRebased": 114.89009559988337
+    },
+    {
+      "date": "2025-07-18",
+      "sourceDate": "2025-07-18",
+      "gmd": 55.59,
+      "vnindex": 1497.28,
+      "gmdReturn": -0.04974358974358972,
+      "vnindexReturn": 0.027110086708374448,
+      "gmdRebased": 181.78548070634403,
+      "vnindexRebased": 118.00477605352964
+    },
+    {
+      "date": "2025-07-25",
+      "sourceDate": "2025-07-25",
+      "gmd": 56.75,
+      "vnindex": 1531.13,
+      "gmdReturn": 0.020867062421298765,
+      "vnindexReturn": 0.02260766189356711,
+      "gmdRebased": 185.57880967952912,
+      "vnindexRebased": 120.67258813237393
+    },
+    {
+      "date": "2025-08-01",
+      "sourceDate": "2025-08-01",
+      "gmd": 54.42,
+      "vnindex": 1495.21,
+      "gmdReturn": -0.041057268722466955,
+      "vnindexReturn": -0.023459797665776327,
+      "gmdRebased": 177.95945062132114,
+      "vnindexRebased": 117.84163363098288
+    },
+    {
+      "date": "2025-08-08",
+      "sourceDate": "2025-08-08",
+      "gmd": 57.34,
+      "vnindex": 1584.95,
+      "gmdReturn": 0.05365674384417507,
+      "vnindexReturn": 0.06001832518509098,
+      "gmdRebased": 187.50817527795945,
+      "vnindexRebased": 124.91429111858959
+    },
+    {
+      "date": "2025-08-15",
+      "sourceDate": "2025-08-15",
+      "gmd": 58.02,
+      "vnindex": 1630.0,
+      "gmdReturn": 0.01185908615277298,
+      "vnindexReturn": 0.02842360957758916,
+      "gmdRebased": 189.73185088293002,
+      "vnindexRebased": 128.46480616000568
+    },
+    {
+      "date": "2025-08-22",
+      "sourceDate": "2025-08-22",
+      "gmd": 59.96,
+      "vnindex": 1645.47,
+      "gmdReturn": 0.0334367459496725,
+      "vnindexReturn": 0.009490797546012342,
+      "gmdRebased": 196.0758665794637,
+      "vnindexRebased": 129.684039627058
+    },
+    {
+      "date": "2025-08-29",
+      "sourceDate": "2025-08-29",
+      "gmd": 67.15,
+      "vnindex": 1682.21,
+      "gmdReturn": 0.11991327551701136,
+      "vnindexReturn": 0.022327967085391975,
+      "gmdRebased": 219.58796599084374,
+      "vnindexRebased": 132.57962059535166
+    },
+    {
+      "date": "2025-09-05",
+      "sourceDate": "2025-09-05",
+      "gmd": 64.62,
+      "vnindex": 1666.97,
+      "gmdReturn": -0.037676842889054374,
+      "vnindexReturn": -0.009059511000410136,
+      "gmdRebased": 211.31458469587966,
+      "vnindexRebased": 131.37851406413782
+    },
+    {
+      "date": "2025-09-12",
+      "sourceDate": "2025-09-12",
+      "gmd": 67.25,
+      "vnindex": 1667.26,
+      "gmdReturn": 0.04069947384710604,
+      "vnindexReturn": 0.00017396833776239795,
+      "gmdRebased": 219.91497710922175,
+      "vnindexRebased": 131.40136976584728
+    },
+    {
+      "date": "2025-09-19",
+      "sourceDate": "2025-09-19",
+      "gmd": 70.84,
+      "vnindex": 1658.62,
+      "gmdReturn": 0.05338289962825282,
+      "vnindexReturn": -0.005182155152765655,
+      "gmdRebased": 231.65467625899282,
+      "vnindexRebased": 130.72042748043472
+    },
+    {
+      "date": "2025-09-26",
+      "sourceDate": "2025-09-26",
+      "gmd": 68.03,
+      "vnindex": 1660.7,
+      "gmdReturn": -0.03966685488424626,
+      "vnindexReturn": 0.0012540545754906596,
+      "gmdRebased": 222.46566383257033,
+      "vnindexRebased": 130.88435803062666
+    },
+    {
+      "date": "2025-10-03",
+      "sourceDate": "2025-10-03",
+      "gmd": 64.04,
+      "vnindex": 1645.82,
+      "gmdReturn": -0.05865059532559158,
+      "vnindexReturn": -0.008960077075931938,
+      "gmdRebased": 209.41792020928713,
+      "vnindexRebased": 129.71162409463835
+    },
+    {
+      "date": "2025-10-10",
+      "sourceDate": "2025-10-10",
+      "gmd": 66.57,
+      "vnindex": 1747.55,
+      "gmdReturn": 0.03950655840099926,
+      "vnindexReturn": 0.06181113365981705,
+      "gmdRebased": 217.69130150425116,
+      "vnindexRebased": 137.729246628784
+    },
+    {
+      "date": "2025-10-17",
+      "sourceDate": "2025-10-17",
+      "gmd": 66.08,
+      "vnindex": 1731.19,
+      "gmdReturn": -0.007360672975814886,
+      "vnindexReturn": -0.009361677777459776,
+      "gmdRebased": 216.0889470241988,
+      "vnindexRebased": 136.43986980131305
+    },
+    {
+      "date": "2025-10-24",
+      "sourceDate": "2025-10-24",
+      "gmd": 64.92,
+      "vnindex": 1683.18,
+      "gmdReturn": -0.017554479418886104,
+      "vnindexReturn": -0.027732369064054185,
+      "gmdRebased": 212.29561805101375,
+      "vnindexRebased": 132.65606897693152
+    },
+    {
+      "date": "2025-10-31",
+      "sourceDate": "2025-10-31",
+      "gmd": 66.18,
+      "vnindex": 1639.65,
+      "gmdReturn": 0.019408502772643388,
+      "vnindexReturn": -0.02586176166541898,
+      "gmdRebased": 216.4159581425769,
+      "vnindexRebased": 129.22534933757873
+    },
+    {
+      "date": "2025-11-07",
+      "sourceDate": "2025-11-07",
+      "gmd": 61.61,
+      "vnindex": 1599.1,
+      "gmdReturn": -0.06905409489271697,
+      "vnindexReturn": -0.02473088768944598,
+      "gmdRebased": 201.47155003270112,
+      "vnindexRebased": 126.02949173648163
+    },
+    {
+      "date": "2025-11-14",
+      "sourceDate": "2025-11-14",
+      "gmd": 60.74,
+      "vnindex": 1635.46,
+      "gmdReturn": -0.01412108423957148,
+      "vnindexReturn": 0.022737790006879033,
+      "gmdRebased": 198.6265533028123,
+      "vnindexRebased": 128.89512385425945
+    },
+    {
+      "date": "2025-11-21",
+      "sourceDate": "2025-11-21",
+      "gmd": 61.42,
+      "vnindex": 1654.93,
+      "gmdReturn": 0.011195258478762016,
+      "vnindexReturn": 0.011904907487801708,
+      "gmdRebased": 200.85022890778288,
+      "vnindexRebased": 130.42960837937315
+    },
+    {
+      "date": "2025-11-28",
+      "sourceDate": "2025-11-28",
+      "gmd": 62.2,
+      "vnindex": 1690.99,
+      "gmdReturn": 0.012699446434386141,
+      "vnindexReturn": 0.021789441245249064,
+      "gmdRebased": 203.40091563113148,
+      "vnindexRebased": 133.27159666779633
+    },
+    {
+      "date": "2025-12-05",
+      "sourceDate": "2025-12-05",
+      "gmd": 59.28,
+      "vnindex": 1741.32,
+      "gmdReturn": -0.04694533762057884,
+      "vnindexReturn": 0.02976362958976697,
+      "gmdRebased": 193.85219097449317,
+      "vnindexRebased": 137.23824310585343
+    },
+    {
+      "date": "2025-12-12",
+      "sourceDate": "2025-12-12",
+      "gmd": 55.78,
+      "vnindex": 1646.89,
+      "gmdReturn": -0.05904183535762486,
+      "vnindexReturn": -0.05422897571956897,
+      "gmdRebased": 182.40680183126227,
+      "vnindexRebased": 129.7959537526698
+    },
+    {
+      "date": "2025-12-19",
+      "sourceDate": "2025-12-19",
+      "gmd": 57.82,
+      "vnindex": 1704.31,
+      "gmdReturn": 0.036572248117604955,
+      "vnindexReturn": 0.034865716593093454,
+      "gmdRebased": 189.07782864617397,
+      "vnindexRebased": 134.32138269114066
+    },
+    {
+      "date": "2025-12-26",
+      "sourceDate": "2025-12-26",
+      "gmd": 57.82,
+      "vnindex": 1729.8,
+      "gmdReturn": 0.0,
+      "vnindexReturn": 0.014956199282994298,
+      "gmdRebased": 189.07782864617397,
+      "vnindexRebased": 136.3303200586367
+    },
+    {
+      "date": "2026-01-02",
+      "sourceDate": "2025-12-31",
+      "gmd": 59.28,
+      "vnindex": 1784.49,
+      "gmdReturn": 0.025250778277412733,
+      "vnindexReturn": 0.0316163718348943,
+      "gmdRebased": 193.85219097449317,
+      "vnindexRebased": 140.64059014998068
+    },
+    {
+      "date": "2026-01-09",
+      "sourceDate": "2026-01-09",
+      "gmd": 60.25,
+      "vnindex": 1867.9,
+      "gmdReturn": 0.01636302294197023,
+      "vnindexReturn": 0.04674164607254738,
+      "gmdRebased": 197.02419882275998,
+      "vnindexRebased": 147.2143628382053
+    },
+    {
+      "date": "2026-01-16",
+      "sourceDate": "2026-01-16",
+      "gmd": 62.1,
+      "vnindex": 1879.13,
+      "gmdReturn": 0.030705394190871482,
+      "vnindexReturn": 0.006012099148776651,
+      "gmdRebased": 203.07390451275347,
+      "vnindexRebased": 148.09943018371257
+    },
+    {
+      "date": "2026-01-23",
+      "sourceDate": "2026-01-23",
+      "gmd": 66.57,
+      "vnindex": 1870.79,
+      "gmdReturn": 0.07198067632850225,
+      "vnindexReturn": -0.004438224071777963,
+      "gmdRebased": 217.69130150425116,
+      "vnindexRebased": 147.4421317276546
+    },
+    {
+      "date": "2026-01-30",
+      "sourceDate": "2026-01-30",
+      "gmd": 66.57,
+      "vnindex": 1829.04,
+      "gmdReturn": 0.0,
+      "vnindexReturn": -0.022316775266064015,
+      "gmdRebased": 217.69130150425116,
+      "vnindexRebased": 144.15169880913913
+    },
+    {
+      "date": "2026-02-06",
+      "sourceDate": "2026-02-06",
+      "gmd": 69.48,
+      "vnindex": 1755.49,
+      "gmdReturn": 0.04371338440739092,
+      "vnindexReturn": -0.040212351834842286,
+      "gmdRebased": 227.2073250490517,
+      "vnindexRebased": 138.3550199790358
+    },
+    {
+      "date": "2026-02-13",
+      "sourceDate": "2026-02-13",
+      "gmd": 72.89,
+      "vnindex": 1824.09,
+      "gmdReturn": 0.04907887161773172,
+      "vnindexReturn": 0.03907740858677622,
+      "gmdRebased": 238.35840418574233,
+      "vnindexRebased": 143.7615756247882
+    },
+    {
+      "date": "2026-02-27",
+      "sourceDate": "2026-02-27",
+      "gmd": 82.02,
+      "vnindex": 1880.33,
+      "gmdReturn": 0.12525723693236368,
+      "vnindexReturn": 0.03083181202681895,
+      "gmdRebased": 268.214519293656,
+      "vnindexRebased": 148.194005501131
+    },
+    {
+      "date": "2026-03-06",
+      "sourceDate": "2026-03-06",
+      "gmd": 75.8,
+      "vnindex": 1767.84,
+      "gmdReturn": -0.07583516215557184,
+      "vnindexReturn": -0.05982460525546052,
+      "gmdRebased": 247.87442773054283,
+      "vnindexRebased": 139.32835762080026
+    },
+    {
+      "date": "2026-03-13",
+      "sourceDate": "2026-03-13",
+      "gmd": 73.76,
+      "vnindex": 1696.24,
+      "gmdReturn": -0.026912928759894372,
+      "vnindexReturn": -0.04050140284188608,
+      "gmdRebased": 241.20340091563116,
+      "vnindexRebased": 133.68536368150185
+    },
+    {
+      "date": "2026-03-20",
+      "sourceDate": "2026-03-20",
+      "gmd": 75.02,
+      "vnindex": 1647.81,
+      "gmdReturn": 0.017082429501084517,
+      "vnindexReturn": -0.02855138423807957,
+      "gmdRebased": 245.32374100719423,
+      "vnindexRebased": 129.86846149602388
+    },
+    {
+      "date": "2026-03-27",
+      "sourceDate": "2026-03-27",
+      "gmd": 76.29,
+      "vnindex": 1672.8,
+      "gmdReturn": 0.01692881898160503,
+      "vnindexReturn": 0.015165583410708727,
+      "gmdRebased": 249.47678221059522,
+      "vnindexRebased": 131.83799248126226
+    },
+    {
+      "date": "2026-04-03",
+      "sourceDate": "2026-04-03",
+      "gmd": 68.71,
+      "vnindex": 1684.04,
+      "gmdReturn": -0.09935771398610582,
+      "vnindexReturn": 0.006719273075083798,
+      "gmdRebased": 224.68933943754087,
+      "vnindexRebased": 132.7238479544147
+    },
+    {
+      "date": "2026-04-10",
+      "sourceDate": "2026-04-10",
+      "gmd": 70.55,
+      "vnindex": 1750.0,
+      "gmdReturn": 0.026779216998981337,
+      "vnindexReturn": 0.0391677157312178,
+      "gmdRebased": 230.70634401569654,
+      "vnindexRebased": 137.9223379018466
+    },
+    {
+      "date": "2026-04-17",
+      "sourceDate": "2026-04-17",
+      "gmd": 72.5,
+      "vnindex": 1817.17,
+      "gmdReturn": 0.027639971651311157,
+      "vnindexReturn": 0.038382857142857274,
+      "gmdRebased": 237.083060824068,
+      "vnindexRebased": 143.21619129434205
+    },
+    {
+      "date": "2026-04-24",
+      "sourceDate": "2026-04-24",
+      "gmd": 72.89,
+      "vnindex": 1853.29,
+      "gmdReturn": 0.005379310344827637,
+      "vnindexReturn": 0.01987706158477187,
+      "gmdRebased": 238.35840418574233,
+      "vnindexRebased": 146.06290834863614
+    },
+    {
+      "date": "2026-05-01",
+      "sourceDate": "2026-04-29",
+      "gmd": 73.18,
+      "vnindex": 1854.1,
+      "gmdReturn": 0.00397859788722732,
+      "vnindexReturn": 0.0004370605787544779,
+      "gmdRebased": 239.3067364290386,
+      "vnindexRebased": 146.1267466878936
+    },
+    {
+      "date": "2026-05-08",
+      "sourceDate": "2026-05-08",
+      "gmd": 78.42,
+      "vnindex": 1915.37,
+      "gmdReturn": 0.07160426345996163,
+      "vnindexReturn": 0.03304568254139473,
+      "gmdRebased": 256.4421190320471,
+      "vnindexRebased": 150.95560476974853
+    },
+    {
+      "date": "2026-05-15",
+      "sourceDate": "2026-05-15",
+      "gmd": 77.65,
+      "vnindex": 1921.6,
+      "gmdReturn": -0.009818923743942776,
+      "vnindexReturn": 0.003252635261072223,
+      "gmdRebased": 253.92413342053635,
+      "vnindexRebased": 151.4466082926791
+    },
+    {
+      "date": "2026-05-22",
+      "sourceDate": "2026-05-22",
+      "gmd": 73.6,
+      "vnindex": 1877.13,
+      "gmdReturn": -0.0521571152607857,
+      "vnindexReturn": -0.02314217318900902,
+      "gmdRebased": 240.68018312622627,
+      "vnindexRebased": 147.9418046546819
+    },
+    {
+      "date": "2026-05-29",
+      "sourceDate": "2026-05-29",
+      "gmd": 72.3,
+      "vnindex": 1863.49,
+      "gmdReturn": -0.017663043478260865,
+      "vnindexReturn": -0.007266412022609026,
+      "gmdRebased": 236.42903858731196,
+      "vnindexRebased": 146.86679854669262
+    },
+    {
+      "date": "2026-06-05",
+      "sourceDate": "2026-06-05",
+      "gmd": 76.2,
+      "vnindex": 1838.9,
+      "gmdReturn": 0.053941908713692976,
+      "vnindexReturn": -0.013195670489243305,
+      "gmdRebased": 249.18247220405493,
+      "vnindexRebased": 144.9287926672604
+    },
+    {
+      "date": "2026-06-12",
+      "sourceDate": "2026-06-12",
+      "gmd": 76.0,
+      "vnindex": 1791.65,
+      "gmdReturn": -0.002624671916010568,
+      "vnindexReturn": -0.02569470879330038,
+      "gmdRebased": 248.52844996729888,
+      "vnindexRebased": 141.20488954391055
+    },
+    {
+      "date": "2026-06-19",
+      "sourceDate": "2026-06-19",
+      "gmd": 77.0,
+      "vnindex": 1824.53,
+      "gmdReturn": 0.013157894736842035,
+      "vnindexReturn": 0.018351798621382365,
+      "gmdRebased": 251.79856115107918,
+      "vnindexRebased": 143.79625324117495
+    },
+    {
+      "date": "2026-06-26",
+      "sourceDate": "2026-06-26",
+      "gmd": 73.0,
+      "vnindex": 1871.91,
+      "gmdReturn": -0.051948051948051965,
+      "vnindexReturn": 0.0259683315703223,
+      "gmdRebased": 238.71811641595815,
+      "vnindexRebased": 147.53040202391182
+    },
+    {
+      "date": "2026-07-03",
+      "sourceDate": "2026-07-03",
+      "gmd": 76.4,
+      "vnindex": 1862.08,
+      "gmdReturn": 0.046575342465753566,
+      "vnindexReturn": -0.005251320843416729,
+      "gmdRebased": 249.83649444081104,
+      "vnindexRebased": 146.75567254872598
+    },
+    {
+      "date": "2026-07-10",
+      "sourceDate": "2026-07-10",
+      "gmd": 75.3,
+      "vnindex": 1828.34,
+      "gmdReturn": -0.014397905759162444,
+      "vnindexReturn": -0.01811952225468294,
+      "gmdRebased": 246.2393721386527,
+      "vnindexRebased": 144.0965298739784
+    },
+    {
+      "date": "2026-07-17",
+      "sourceDate": "2026-07-17",
+      "gmd": 77.5,
+      "vnindex": 1787.45,
+      "gmdReturn": 0.02921646746347939,
+      "vnindexReturn": -0.02236454926326603,
+      "gmdRebased": 253.4336167429693,
+      "vnindexRebased": 140.8738759329461
+    },
+    {
+      "date": "2026-07-24",
+      "sourceDate": "2026-07-24",
+      "gmd": 73.2,
+      "vnindex": 1686.11,
+      "gmdReturn": -0.05548387096774188,
+      "vnindexReturn": -0.056695292176005,
+      "gmdRebased": 239.3721386527142,
+      "vnindexRebased": 132.88699037696145
+    }
+  ]
+}

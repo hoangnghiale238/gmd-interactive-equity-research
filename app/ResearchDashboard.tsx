@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import PricePerformance from "./PricePerformance";
 
 type ScenarioKey = "Base" | "Bull" | "Bear" | "Custom";
 type HistoryMetric = "Revenue" | "Core PBT" | "Throughput";
@@ -231,7 +232,7 @@ const sources = [
     id: "SRC-P401",
     category: "Market" as const,
     title: "VNStock Market Data",
-    use: "GMD close price on 24-Jul-2026",
+    use: "Five-year GMD/VN-Index prices, beta regression and valuation close",
     url: "https://vnstocks.com/docs/vnstock/du-lieu-thi-truong-market-data",
     status: "API",
   },
@@ -429,6 +430,7 @@ export default function ResearchDashboard() {
         </a>
         <nav aria-label="Main navigation">
           <a href="#summary">Investment case</a>
+          <a href="#performance">Market performance</a>
           <a href="#valuation">Valuation</a>
           <a href="#scenario">Forecasts</a>
           <a className="download-pill" href="#downloads">Downloads</a>
@@ -763,10 +765,25 @@ export default function ResearchDashboard() {
         </p>
       </section>
 
+      <section className="section performance-section" id="performance">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">05 · MARKET PERFORMANCE</p>
+            <h2>GMD versus the VN-Index</h2>
+          </div>
+          <p>
+            Compare weekly price performance over multiple windows, then trace
+            the same five-year series into the beta used in the cost-of-equity
+            work.
+          </p>
+        </div>
+        <PricePerformance />
+      </section>
+
       <section className="section scenario-section" id="scenario">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">05 · FORECAST CASES</p>
+            <p className="eyebrow">06 · FORECAST CASES</p>
             <h2>2026 operating assumptions</h2>
           </div>
           <div className="segmented-control scenario-tabs" aria-label="Scenario">
@@ -903,7 +920,7 @@ export default function ResearchDashboard() {
       <section className="section" id="valuation">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">06 · VALUATION</p>
+            <p className="eyebrow">07 · VALUATION</p>
             <h2>Target price and sensitivity</h2>
           </div>
           <p>
@@ -1003,7 +1020,7 @@ export default function ResearchDashboard() {
       <section className="section" id="risks">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">07 · RISKS & CATALYSTS</p>
+            <p className="eyebrow">08 · RISKS & CATALYSTS</p>
             <h2>What changes the investment case</h2>
           </div>
           <div className="segmented-control">
@@ -1047,7 +1064,7 @@ export default function ResearchDashboard() {
       <section className="section" id="sources">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">08 · SOURCE EXPLORER</p>
+            <p className="eyebrow">09 · SOURCE EXPLORER</p>
             <h2>Sources and supporting evidence</h2>
           </div>
           <p>41 registered sources in the full Excel model. Key sources are searchable here.</p>
@@ -1111,7 +1128,7 @@ export default function ResearchDashboard() {
           <a href="/downloads/02_GMD_Top_Down_Model.xlsx">
             <span>XLSX</span>
             <strong>Full research model</strong>
-            <em>35 sheets · raw data · checks</em>
+            <em>37 sheets · raw data · beta · checks</em>
           </a>
           <a href="/downloads/GMD_Top_Down_Investment_Note.pdf">
             <span>PDF</span>

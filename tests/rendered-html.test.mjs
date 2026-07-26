@@ -52,3 +52,23 @@ test("uses the supplied Gemadept hero and report scenario targets", async () => 
   assert.match(dashboard, /Bull:\s*115_500/);
   assert.match(dashboard, /Bear:\s*51_000/);
 });
+
+test("ships the VNStock price-performance and beta evidence", async () => {
+  const [dashboard, chart, rawData] = await Promise.all([
+    readFile(new URL("../app/ResearchDashboard.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/PricePerformance.tsx", import.meta.url), "utf8"),
+    readFile(
+      new URL("../public/data/gmd-price-performance.json", import.meta.url),
+      "utf8",
+    ),
+  ]);
+  const data = JSON.parse(rawData);
+
+  assert.match(dashboard, /id="performance"/);
+  assert.match(chart, /Rebased to 100/);
+  assert.match(chart, /Price levels/);
+  assert.equal(data.weekly.length, 259);
+  assert.equal(data.statistics.regression_observations, 258);
+  assert.ok(data.statistics.raw_beta > 0.7);
+  assert.ok(data.statistics.raw_beta < 0.8);
+});
