@@ -166,16 +166,25 @@ export default function PricePerformance() {
       gmdValue: rebased ? (row.gmd / first.gmd) * 100 : row.gmd,
       indexValue: rebased ? (row.vnindex / first.vnindex) * 100 : row.vnindex,
     }));
-    const indexRange = priceRange(
-      rows.map((row) => row.indexValue),
-      rebased,
-    );
-    const gmdRange = rebased
-      ? indexRange
-      : priceRange(
-          rows.map((row) => row.gmdValue),
-          false,
-        );
+    const combinedRebasedValues = rows.flatMap((row) => [
+      row.gmdValue,
+      row.indexValue,
+    ]);
+    const sharedRebasedRange = rebased
+      ? priceRange(combinedRebasedValues, true)
+      : null;
+    const indexRange =
+      sharedRebasedRange ??
+      priceRange(
+        rows.map((row) => row.indexValue),
+        false,
+      );
+    const gmdRange =
+      sharedRebasedRange ??
+      priceRange(
+        rows.map((row) => row.gmdValue),
+        false,
+      );
     const gmdReturn = last.gmd / first.gmd - 1;
     const indexReturn = last.vnindex / first.vnindex - 1;
 

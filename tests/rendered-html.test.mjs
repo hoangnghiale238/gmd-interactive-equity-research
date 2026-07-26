@@ -73,6 +73,8 @@ test("ships the VNStock price-performance and beta evidence", async () => {
   assert.match(chart, /percentage points/);
   assert.match(chart, /performance-crosshair/);
   assert.match(chart, /performance-floating-tooltip/);
+  assert.match(chart, /combinedRebasedValues/);
+  assert.match(chart, /sharedRebasedRange\s*\?\?/);
   const genericPanelRule = css.lastIndexOf(".site.light-theme .panel,");
   const darkPanelOverride = css.lastIndexOf(
     ".site.light-theme .panel.performance-panel",
