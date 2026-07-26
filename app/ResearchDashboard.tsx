@@ -424,7 +424,7 @@ export default function ResearchDashboard() {
         <nav aria-label="Main navigation">
           <a href="#summary">Investment case</a>
           <a href="#valuation">Valuation</a>
-          <a href="#history">Forecasts</a>
+          <a href="#scenario">Forecasts</a>
           <a className="download-pill" href="#downloads">Downloads</a>
         </nav>
       </header>
@@ -510,42 +510,10 @@ export default function ResearchDashboard() {
         </div>
       </section>
 
-      <section className="methodology-box" aria-label="Methodology and data cutoff">
-        <div className="methodology-head">
-          <div>
-            <p className="eyebrow">Methodology / Data Cutoff</p>
-            <h2>How to read the model</h2>
-          </div>
-          <p>
-            The forecast starts with national container throughput, then applies
-            GMD market share, unit revenue, margins and associate earnings.
-            P/E and DCF/SOTP are weighted equally in the selected target.
-          </p>
-        </div>
-        <div className="methodology-grid">
-          <article><span>Data cutoff</span><strong>24 Jul 2026</strong><small>Market price and public disclosures used in the model.</small></article>
-          <article><span>Current price</span><strong>73,200</strong><small>VND/share used for expected-return calculations.</small></article>
-          <article><span>Investment horizon</span><strong>12 months</strong><small>Target price is presented on a 12-month basis.</small></article>
-          <article><span>Operating anchor</span><strong>Container TEU</strong><small>Physical throughput, not merchandise value, drives the port forecast.</small></article>
-          <article><span>Valuation</span><strong>P/E + DCF/SOTP</strong><small>A 50/50 blend balances earnings and cash-flow views.</small></article>
-          <article><span>Primary watch item</span><strong>Market share</strong><small>Capacity must translate into services, utilisation and retained share.</small></article>
-        </div>
-        <div className="talking-points">
-          <article>
-            <b>Most important KPI to monitor</b>
-            <p>GMD system throughput relative to national container growth. A widening gap would signal that new capacity is not converting into market share.</p>
-          </article>
-          <article>
-            <b>Why ports rather than shipping</b>
-            <p>Port earnings are driven mainly by throughput, tariffs and service mix. Shipping adds freight-rate and vessel-supply volatility to the same macro view.</p>
-          </article>
-        </div>
-      </section>
-
       <section className="section" id="thesis">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">Investment logic</p>
+            <p className="eyebrow">01 · TOP-DOWN FRAMEWORK</p>
             <h2>From trade recovery to earnings</h2>
           </div>
           <p>
@@ -642,8 +610,8 @@ export default function ResearchDashboard() {
       <section className="section" id="peers">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">03 · PEER SELECTION LAB</p>
-            <h2>Peer selection and scoring</h2>
+            <p className="eyebrow">03 · STOCK SELECTION</p>
+            <h2>Why GMD is the preferred port exposure</h2>
           </div>
           <button
             className="text-button"
@@ -716,8 +684,8 @@ export default function ResearchDashboard() {
       <section className="section" id="history">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">04 · FIVE-YEAR EARNINGS EVIDENCE</p>
-            <h2>History must explain the forecast</h2>
+            <p className="eyebrow">04 · HISTORICAL EVIDENCE</p>
+            <h2>Five years of operating and earnings performance</h2>
           </div>
           <div className="segmented-control" aria-label="Historical metric">
             {(["Revenue", "Core PBT", "Throughput"] as HistoryMetric[]).map(
@@ -791,8 +759,8 @@ export default function ResearchDashboard() {
       <section className="section scenario-section" id="scenario">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">05 · LIVE SCENARIO LAB</p>
-            <h2>Build your own 2026 case</h2>
+            <p className="eyebrow">05 · FORECAST CASES</p>
+            <h2>2026 operating assumptions</h2>
           </div>
           <div className="segmented-control scenario-tabs" aria-label="Scenario">
             {(["Base", "Bull", "Bear"] as const).map((key) => (
@@ -928,8 +896,8 @@ export default function ResearchDashboard() {
       <section className="section" id="valuation">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">06 · VALUATION LAB</p>
-            <h2>Watch the call move with terminal assumptions</h2>
+            <p className="eyebrow">06 · VALUATION</p>
+            <h2>Target price and sensitivity</h2>
           </div>
           <p>
             DCF is a cross-check, not a single-point truth. Change WACC, terminal
@@ -1028,8 +996,8 @@ export default function ResearchDashboard() {
       <section className="section" id="risks">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">07 · CATALYSTS & FALSIFIERS</p>
-            <h2>A thesis should tell you when it is wrong</h2>
+            <p className="eyebrow">07 · RISKS & CATALYSTS</p>
+            <h2>What changes the investment case</h2>
           </div>
           <div className="segmented-control">
             {(["Catalysts", "Falsifiers"] as const).map((view) => (
