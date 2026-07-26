@@ -2,8 +2,8 @@
 
 import { useEffect, useMemo, useState } from "react";
 
-type RangeKey = "3M" | "6M" | "YTD" | "1Y" | "5Y";
-type ChartMode = "Rebased" | "Price";
+type RangeKey = "3m" | "6m" | "ytd" | "1y" | "since";
+type ChartMode = "price" | "rebased";
 
 type PricePoint = {
   date: string;
@@ -31,58 +31,88 @@ type PricePayload = {
   weekly: PricePoint[];
 };
 
-const RANGE_OPTIONS: RangeKey[] = ["3M", "6M", "YTD", "1Y", "5Y"];
-const WIDTH = 960;
-const HEIGHT = 390;
-const MARGIN = { top: 24, right: 68, bottom: 46, left: 68 };
-const PLOT_WIDTH = WIDTH - MARGIN.left - MARGIN.right;
-const PLOT_HEIGHT = HEIGHT - MARGIN.top - MARGIN.bottom;
+type PlotPoint = PricePoint & {
+  timestamp: number;
+  gmdValue: number;
+  indexValue: number;
+};
 
-function clamp(value: number, min: number, max: number) {
-  return Math.min(Math.max(value, min), max);
+const RANGE_OPTIONS: Array<{ key: RangeKey; label: string }> = [
+  { key: "3m", label: "3M" },
+  { key: "6m", label: "6M" },
+  { key: "ytd", label: "YTD" },
+  { key: "1y", label: "1Y" },
+  { key: "since", label: "Since initiation" },
+];
+
+const WIDTH = 1100;
+const HEIGHT = 360;
+const PAD = { left: 78, right: 84, top: 16, bottom: 66 };
+const PLOT_WIDTH = WIDTH - PAD.left - PAD.right;
+const PLOT_HEIGHT = HEIGHT - PAD.top - PAD.bottom;
+
+function clamp(value: number, minimum: number, maximum: number) {
+  return Math.min(Math.max(value, minimum), maximum);
 }
 
-function formatDate(value: string, compact = false) {
+function formatDate(timestamp: number) {
   return new Intl.DateTimeFormat("en-GB", {
-    day: compact ? undefined : "2-digit",
+    day: "2-digit",
     month: "short",
-    year: compact ? "2-digit" : "numeric",
-  }).format(new Date(`${value}T00:00:00`));
+    year: "numeric",
+  }).format(new Date(timestamp));
 }
 
-function formatReturn(value: number) {
-  const sign = value > 0 ? "+" : "";
-  return `${sign}${value.toFixed(1)}%`;
+function signedPercent(value: number) {
+  return `${value >= 0 ? "+" : ""}${(value * 100).toFixed(1)}%`;
 }
 
-function paddedDomain(values: number[]) {
-  const minimum = Math.min(...values);
-  const maximum = Math.max(...values);
-  const span = Math.max(maximum - minimum, Math.abs(maximum) * 0.08, 1);
-  return [minimum - span * 0.1, maximum + span * 0.1] as const;
+function signedPercentagePoints(value: number) {
+  return `${value >= 0 ? "+" : ""}${(value * 100).toFixed(1)} percentage points`;
 }
 
-function pathFor(values: number[], domain: readonly [number, number]) {
-  const [minimum, maximum] = domain;
-  const denominator = Math.max(maximum - minimum, 0.0001);
-  return values
-    .map((value, index) => {
+function priceRange(values: number[], rebased: boolean) {
+  const rawMinimum = Math.min(...values);
+  const rawMaximum = Math.max(...values);
+  const padding = Math.max(
+    (rawMaximum - rawMinimum) * 0.1,
+    rebased ? 3 : rawMaximum * 0.04,
+  );
+  return {
+    minimum: rawMinimum - padding,
+    maximum: rawMaximum + padding,
+  };
+}
+
+function linePath(
+  rows: PlotPoint[],
+  field: "gmdValue" | "indexValue",
+  range: { minimum: number; maximum: number },
+) {
+  const firstTimestamp = rows[0].timestamp;
+  const lastTimestamp = rows.at(-1)!.timestamp;
+  const timeSpan = Math.max(lastTimestamp - firstTimestamp, 1);
+  const valueSpan = Math.max(range.maximum - range.minimum, 0.0001);
+
+  return rows
+    .map((row, index) => {
       const x =
-        MARGIN.left +
-        (values.length === 1 ? 0 : (index / (values.length - 1)) * PLOT_WIDTH);
+        PAD.left +
+        ((row.timestamp - firstTimestamp) / timeSpan) * PLOT_WIDTH;
       const y =
-        MARGIN.top +
-        (1 - (value - minimum) / denominator) * PLOT_HEIGHT;
-      return `${index === 0 ? "M" : "L"} ${x.toFixed(2)} ${y.toFixed(2)}`;
+        PAD.top +
+        ((range.maximum - row[field]) / valueSpan) * PLOT_HEIGHT;
+      return `${index === 0 ? "M" : "L"} ${x.toFixed(1)} ${y.toFixed(1)}`;
     })
     .join(" ");
 }
 
 export default function PricePerformance() {
   const [payload, setPayload] = useState<PricePayload | null>(null);
-  const [range, setRange] = useState<RangeKey>("1Y");
-  const [mode, setMode] = useState<ChartMode>("Rebased");
+  const [range, setRange] = useState<RangeKey>("1y");
+  const [mode, setMode] = useState<ChartMode>("price");
   const [hoverIndex, setHoverIndex] = useState<number | null>(null);
+  const [tooltip, setTooltip] = useState({ visible: false, x: 0, y: 0 });
   const [loadError, setLoadError] = useState(false);
 
   useEffect(() => {
@@ -103,266 +133,372 @@ export default function PricePerformance() {
     };
   }, []);
 
-  const points = useMemo(() => {
+  const selectedRows = useMemo(() => {
     if (!payload?.weekly.length) return [];
-    const all = payload.weekly;
-    const lastDate = new Date(`${all.at(-1)!.date}T00:00:00`);
-    let cutoff = new Date(lastDate);
 
-    if (range === "3M") cutoff.setMonth(cutoff.getMonth() - 3);
-    if (range === "6M") cutoff.setMonth(cutoff.getMonth() - 6);
-    if (range === "1Y") cutoff.setFullYear(cutoff.getFullYear() - 1);
-    if (range === "YTD") cutoff = new Date(lastDate.getFullYear(), 0, 1);
-    if (range === "5Y") return all;
+    const rows = payload.weekly
+      .map((row) => ({
+        ...row,
+        timestamp: new Date(`${row.date}T12:00:00`).getTime(),
+      }))
+      .sort((a, b) => a.timestamp - b.timestamp);
 
-    const filtered = all.filter(
-      (point) => new Date(`${point.date}T00:00:00`) >= cutoff,
-    );
-    return filtered.length >= 2 ? filtered : all.slice(-2);
+    if (range === "since") return rows;
+
+    const cutoff = new Date(rows.at(-1)!.timestamp);
+    if (range === "3m") cutoff.setMonth(cutoff.getMonth() - 3);
+    if (range === "6m") cutoff.setMonth(cutoff.getMonth() - 6);
+    if (range === "1y") cutoff.setFullYear(cutoff.getFullYear() - 1);
+    if (range === "ytd") cutoff.setMonth(0, 1);
+
+    const filtered = rows.filter((row) => row.timestamp >= cutoff.getTime());
+    return filtered.length >= 2 ? filtered : rows;
   }, [payload, range]);
 
   const chart = useMemo(() => {
-    if (points.length < 2) return null;
+    if (selectedRows.length < 2) return null;
 
-    const first = points[0];
-    const gmdRebased = points.map((point) => (point.gmd / first.gmd) * 100);
-    const vnindexRebased = points.map(
-      (point) => (point.vnindex / first.vnindex) * 100,
+    const rebased = mode === "rebased";
+    const first = selectedRows[0];
+    const last = selectedRows.at(-1)!;
+    const rows: PlotPoint[] = selectedRows.map((row) => ({
+      ...row,
+      gmdValue: rebased ? (row.gmd / first.gmd) * 100 : row.gmd,
+      indexValue: rebased ? (row.vnindex / first.vnindex) * 100 : row.vnindex,
+    }));
+    const indexRange = priceRange(
+      rows.map((row) => row.indexValue),
+      rebased,
     );
-    const gmdValues =
-      mode === "Rebased" ? gmdRebased : points.map((point) => point.gmd);
-    const vnindexValues =
-      mode === "Rebased"
-        ? vnindexRebased
-        : points.map((point) => point.vnindex);
-    const commonDomain =
-      mode === "Rebased"
-        ? paddedDomain([...gmdValues, ...vnindexValues])
-        : null;
-    const gmdDomain = commonDomain ?? paddedDomain(gmdValues);
-    const vnindexDomain = commonDomain ?? paddedDomain(vnindexValues);
-    const last = points.at(-1)!;
-    const gmdReturn = (last.gmd / first.gmd - 1) * 100;
-    const vnindexReturn = (last.vnindex / first.vnindex - 1) * 100;
+    const gmdRange = rebased
+      ? indexRange
+      : priceRange(
+          rows.map((row) => row.gmdValue),
+          false,
+        );
+    const gmdReturn = last.gmd / first.gmd - 1;
+    const indexReturn = last.vnindex / first.vnindex - 1;
 
     return {
+      rows,
       first,
       last,
-      gmdValues,
-      vnindexValues,
-      gmdDomain,
-      vnindexDomain,
-      gmdPath: pathFor(gmdValues, gmdDomain),
-      vnindexPath: pathFor(vnindexValues, vnindexDomain),
+      rebased,
+      indexRange,
+      gmdRange,
+      gmdPath: linePath(rows, "gmdValue", gmdRange),
+      indexPath: linePath(rows, "indexValue", indexRange),
       gmdReturn,
-      vnindexReturn,
-      relativeReturn: gmdReturn - vnindexReturn,
+      indexReturn,
+      relativeReturn: gmdReturn - indexReturn,
     };
-  }, [mode, points]);
+  }, [mode, selectedRows]);
 
   if (loadError) {
     return (
-      <div className="panel performance-empty">
+      <article className="panel performance-panel performance-empty">
         Market-price data could not be loaded. The complete raw series remains
         available in the Excel model.
-      </div>
+      </article>
     );
   }
 
   if (!payload || !chart) {
-    return <div className="panel performance-empty">Loading market performance…</div>;
+    return (
+      <article className="panel performance-panel performance-empty">
+        Loading weekly market data
+      </article>
+    );
   }
 
-  const activeIndex = hoverIndex ?? points.length - 1;
-  const activePoint = points[activeIndex];
-  const activeX =
-    MARGIN.left +
-    (activeIndex / Math.max(points.length - 1, 1)) * PLOT_WIDTH;
-  const gmdValue = chart.gmdValues[activeIndex];
-  const vnindexValue = chart.vnindexValues[activeIndex];
-  const gmdY =
-    MARGIN.top +
-    (1 -
-      (gmdValue - chart.gmdDomain[0]) /
-        (chart.gmdDomain[1] - chart.gmdDomain[0])) *
+  const firstTimestamp = chart.rows[0].timestamp;
+  const lastTimestamp = chart.rows.at(-1)!.timestamp;
+  const timeSpan = Math.max(lastTimestamp - firstTimestamp, 1);
+  const xForTimestamp = (timestamp: number) =>
+    PAD.left + ((timestamp - firstTimestamp) / timeSpan) * PLOT_WIDTH;
+  const yForValue = (
+    value: number,
+    axisRange: { minimum: number; maximum: number },
+  ) =>
+    PAD.top +
+    ((axisRange.maximum - value) /
+      Math.max(axisRange.maximum - axisRange.minimum, 0.0001)) *
       PLOT_HEIGHT;
-  const vnindexY =
-    MARGIN.top +
-    (1 -
-      (vnindexValue - chart.vnindexDomain[0]) /
-        (chart.vnindexDomain[1] - chart.vnindexDomain[0])) *
-      PLOT_HEIGHT;
-  const xTickIndexes = Array.from(
-    new Set(
-      Array.from({ length: 6 }, (_, index) =>
-        Math.round((index / 5) * (points.length - 1)),
-      ),
-    ),
-  );
-  const yTicks = Array.from({ length: 5 }, (_, index) => index / 4);
-  const tooltipX = clamp(activeX + 14, MARGIN.left + 8, WIDTH - 234);
+
+  const activeIndex = hoverIndex ?? chart.rows.length - 1;
+  const activePoint = chart.rows[activeIndex];
+  const activeX = xForTimestamp(activePoint.timestamp);
+  const gmdY = yForValue(activePoint.gmdValue, chart.gmdRange);
+  const indexY = yForValue(activePoint.indexValue, chart.indexRange);
+  const horizontalTicks = Array.from({ length: 5 }, (_, index) => index / 4);
+  const dateTickRatios =
+    chart.rows.length > 20 ? [0, 0.25, 0.5, 0.75, 1] : [0, 0.33, 0.67, 1];
+  const rangeLabel =
+    RANGE_OPTIONS.find((option) => option.key === range)?.label ?? "1Y";
+
+  const selectRange = (key: RangeKey) => {
+    setRange(key);
+    setHoverIndex(null);
+    setTooltip((current) => ({ ...current, visible: false }));
+  };
+
+  const selectMode = (key: ChartMode) => {
+    setMode(key);
+    setHoverIndex(null);
+    setTooltip((current) => ({ ...current, visible: false }));
+  };
 
   return (
-    <div className="performance-module">
-      <div className="performance-controls">
-        <div className="segmented-control" aria-label="Performance period">
-          {RANGE_OPTIONS.map((option) => (
-            <button
-              key={option}
-              className={range === option ? "active" : ""}
-              onClick={() => {
-                setRange(option);
-                setHoverIndex(null);
-              }}
-            >
-              {option}
-            </button>
-          ))}
+    <article className="panel performance-panel">
+      <div className="performance-panel-head">
+        <div>
+          <p className="eyebrow">Market performance</p>
+          <h3>GMD share price vs VN-Index</h3>
         </div>
-        <div className="segmented-control" aria-label="Chart display">
-          {(["Rebased", "Price"] as ChartMode[]).map((option) => (
+        <div className="performance-control-stack">
+          <div className="performance-range-controls" role="group" aria-label="Performance period">
+            {RANGE_OPTIONS.map((option) => (
+              <button
+                key={option.key}
+                className={range === option.key ? "performance-range active" : "performance-range"}
+                aria-pressed={range === option.key}
+                onClick={() => selectRange(option.key)}
+              >
+                {option.label}
+              </button>
+            ))}
+          </div>
+          <div className="performance-mode-controls" role="group" aria-label="Chart view">
             <button
-              key={option}
-              className={mode === option ? "active" : ""}
-              onClick={() => setMode(option)}
+              className={mode === "price" ? "performance-mode active" : "performance-mode"}
+              aria-pressed={mode === "price"}
+              onClick={() => selectMode("price")}
             >
-              {option === "Rebased" ? "Rebased to 100" : "Price levels"}
+              Price levels
             </button>
-          ))}
+            <button
+              className={mode === "rebased" ? "performance-mode active" : "performance-mode"}
+              aria-pressed={mode === "rebased"}
+              onClick={() => selectMode("rebased")}
+            >
+              Rebased to 100
+            </button>
+          </div>
         </div>
       </div>
 
-      <div className="performance-kpis">
+      <div className="performance-summary" aria-live="polite">
         <article>
           <span>GMD return</span>
-          <strong className={chart.gmdReturn >= 0 ? "positive" : "negative"}>
-            {formatReturn(chart.gmdReturn)}
-          </strong>
-          <small>{formatDate(chart.first.date)} – {formatDate(chart.last.date)}</small>
+          <strong>{signedPercent(chart.gmdReturn)}</strong>
         </article>
         <article>
           <span>VN-Index return</span>
-          <strong className={chart.vnindexReturn >= 0 ? "positive" : "negative"}>
-            {formatReturn(chart.vnindexReturn)}
-          </strong>
-          <small>Same weekly-close window</small>
+          <strong>{signedPercent(chart.indexReturn)}</strong>
         </article>
         <article>
           <span>Relative performance</span>
           <strong className={chart.relativeReturn >= 0 ? "positive" : "negative"}>
-            {formatReturn(chart.relativeReturn)}
+            {signedPercentagePoints(chart.relativeReturn)}
           </strong>
-          <small>GMD return less VN-Index</small>
         </article>
       </div>
 
-      <div className="panel performance-chart-panel">
-        <div className="performance-legend">
-          <span><i className="legend-gmd" />GMD</span>
-          <span><i className="legend-index" />VN-Index</span>
-          <em>{mode === "Rebased" ? "Comparable price performance" : "Dual price axes"}</em>
-        </div>
-        <svg
-          className="performance-chart"
-          viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
-          role="img"
-          aria-label={`GMD and VN-Index ${mode === "Rebased" ? "rebased performance" : "price levels"}`}
-          onPointerMove={(event) => {
-            const bounds = event.currentTarget.getBoundingClientRect();
-            const svgX = ((event.clientX - bounds.left) / bounds.width) * WIDTH;
-            const ratio = clamp((svgX - MARGIN.left) / PLOT_WIDTH, 0, 1);
-            setHoverIndex(Math.round(ratio * (points.length - 1)));
-          }}
-          onPointerLeave={() => setHoverIndex(null)}
-        >
-          {yTicks.map((ratio) => {
-            const y = MARGIN.top + ratio * PLOT_HEIGHT;
-            const vnValue =
-              chart.vnindexDomain[1] -
-              ratio * (chart.vnindexDomain[1] - chart.vnindexDomain[0]);
-            const gmdAxisValue =
-              chart.gmdDomain[1] -
-              ratio * (chart.gmdDomain[1] - chart.gmdDomain[0]);
+      <div className="performance-legend" aria-label="Chart legend">
+        <span><i className="legend-line gmd" />GMD</span>
+        <span><i className="legend-line vnindex" />VN-Index</span>
+      </div>
+
+      <div className="price-performance-chart" aria-label="Weekly GMD share price and VN-Index performance">
+        <svg viewBox={`0 0 ${WIDTH} ${HEIGHT}`} role="img">
+          <title>GMD share price and VN-Index performance</title>
+          <desc>
+            {rangeLabel} return: GMD {signedPercent(chart.gmdReturn)}, VN-Index{" "}
+            {signedPercent(chart.indexReturn)}, relative{" "}
+            {signedPercentagePoints(chart.relativeReturn)}.
+          </desc>
+
+          {horizontalTicks.map((ratio) => {
+            const gridY = PAD.top + ratio * PLOT_HEIGHT;
+            const indexTick =
+              chart.indexRange.maximum -
+              ratio * (chart.indexRange.maximum - chart.indexRange.minimum);
+            const gmdTick =
+              chart.gmdRange.maximum -
+              ratio * (chart.gmdRange.maximum - chart.gmdRange.minimum);
             return (
               <g key={ratio}>
-                <line className="chart-gridline" x1={MARGIN.left} x2={WIDTH - MARGIN.right} y1={y} y2={y} />
-                <text className="chart-axis-label" x={MARGIN.left - 12} y={y + 4} textAnchor="end">
-                  {vnValue.toFixed(0)}
+                <line
+                  x1={PAD.left}
+                  y1={gridY}
+                  x2={WIDTH - PAD.right}
+                  y2={gridY}
+                  className="performance-gridline"
+                />
+                <text x={PAD.left - 12} y={gridY + 4} textAnchor="end" className="axis">
+                  {indexTick.toFixed(0)}
                 </text>
-                {mode === "Price" && (
-                  <text className="chart-axis-label chart-axis-gmd" x={WIDTH - MARGIN.right + 12} y={y + 4}>
-                    {gmdAxisValue.toFixed(0)}
+                {!chart.rebased && (
+                  <text x={WIDTH - PAD.right + 12} y={gridY + 4} className="axis">
+                    {gmdTick.toFixed(1)}k
                   </text>
                 )}
               </g>
             );
           })}
 
-          {xTickIndexes.map((index) => {
-            const x =
-              MARGIN.left +
-              (index / Math.max(points.length - 1, 1)) * PLOT_WIDTH;
+          {dateTickRatios.map((ratio) => {
+            const targetTimestamp = firstTimestamp + ratio * timeSpan;
+            const nearest = chart.rows.reduce((best, row) =>
+              Math.abs(row.timestamp - targetTimestamp) <
+              Math.abs(best.timestamp - targetTimestamp)
+                ? row
+                : best,
+            );
+            const tickX = xForTimestamp(nearest.timestamp);
             return (
-              <g key={`${points[index].date}-${index}`}>
-                <line className="chart-tick" x1={x} x2={x} y1={HEIGHT - MARGIN.bottom} y2={HEIGHT - MARGIN.bottom + 6} />
-                <text className="chart-axis-label" x={x} y={HEIGHT - 18} textAnchor="middle">
-                  {formatDate(points[index].date, true)}
+              <g key={`${nearest.date}-${ratio}`}>
+                <line
+                  x1={tickX}
+                  y1={HEIGHT - PAD.bottom}
+                  x2={tickX}
+                  y2={HEIGHT - PAD.bottom + 6}
+                  className="performance-date-tick"
+                />
+                <text
+                  x={tickX}
+                  y={HEIGHT - 24}
+                  textAnchor="middle"
+                  className="axis"
+                >
+                  {formatDate(nearest.timestamp)}
                 </text>
               </g>
             );
           })}
 
-          <path className="performance-line index-line" d={chart.vnindexPath} />
-          <path className="performance-line gmd-line" d={chart.gmdPath} />
-
-          <line className="hover-line" x1={activeX} x2={activeX} y1={MARGIN.top} y2={HEIGHT - MARGIN.bottom} />
-          <circle className="hover-dot gmd-dot" cx={activeX} cy={gmdY} r="5" />
-          <circle className="hover-dot index-dot" cx={activeX} cy={vnindexY} r="4.5" />
-
-          <g className="chart-tooltip" transform={`translate(${tooltipX} 38)`}>
-            <rect width="218" height="94" rx="10" />
-            <text x="14" y="22" className="tooltip-date">{formatDate(activePoint.date)}</text>
-            <text x="14" y="49" className="tooltip-gmd">GMD</text>
-            <text x="204" y="49" textAnchor="end">
-              {mode === "Rebased" ? gmdValue.toFixed(1) : `${activePoint.gmd.toFixed(2)}k`}
+          <text
+            x={18}
+            y={PAD.top + PLOT_HEIGHT / 2}
+            transform={`rotate(-90 18 ${PAD.top + PLOT_HEIGHT / 2})`}
+            textAnchor="middle"
+            className="axis"
+          >
+            {chart.rebased ? "Rebased performance" : "VN-Index"}
+          </text>
+          {!chart.rebased && (
+            <text
+              x={WIDTH - 18}
+              y={PAD.top + PLOT_HEIGHT / 2}
+              transform={`rotate(90 ${WIDTH - 18} ${PAD.top + PLOT_HEIGHT / 2})`}
+              textAnchor="middle"
+              className="axis"
+            >
+              GMD price (VND &apos;000)
             </text>
-            <text x="14" y="75" className="tooltip-index">VN-Index</text>
-            <text x="204" y="75" textAnchor="end">
-              {mode === "Rebased" ? vnindexValue.toFixed(1) : activePoint.vnindex.toFixed(2)}
-            </text>
-          </g>
+          )}
+
+          <path
+            key={`index-${range}-${mode}`}
+            d={chart.indexPath}
+            pathLength="1"
+            className="performance-series performance-series-index"
+          />
+          <path
+            key={`gmd-${range}-${mode}`}
+            d={chart.gmdPath}
+            pathLength="1"
+            className="performance-series performance-series-gmd"
+          />
+
+          <line
+            x1={activeX}
+            x2={activeX}
+            y1={PAD.top}
+            y2={HEIGHT - PAD.bottom}
+            className={tooltip.visible ? "performance-crosshair visible" : "performance-crosshair"}
+          />
+          <circle
+            cx={activeX}
+            cy={indexY}
+            r="5"
+            className={tooltip.visible ? "performance-hover-dot index visible" : "performance-hover-dot index"}
+          />
+          <circle
+            cx={activeX}
+            cy={gmdY}
+            r="5.5"
+            className={tooltip.visible ? "performance-hover-dot gmd visible" : "performance-hover-dot gmd"}
+          />
+
+          <rect
+            x={PAD.left}
+            y={PAD.top}
+            width={PLOT_WIDTH}
+            height={PLOT_HEIGHT}
+            className="performance-hover-overlay"
+            onPointerMove={(event) => {
+              const bounds = event.currentTarget.ownerSVGElement!.getBoundingClientRect();
+              const localX =
+                ((event.clientX - bounds.left) / bounds.width) * WIDTH;
+              const targetTimestamp =
+                firstTimestamp +
+                clamp((localX - PAD.left) / PLOT_WIDTH, 0, 1) * timeSpan;
+              const nearestIndex = chart.rows.reduce(
+                (bestIndex, row, index) =>
+                  Math.abs(row.timestamp - targetTimestamp) <
+                  Math.abs(chart.rows[bestIndex].timestamp - targetTimestamp)
+                    ? index
+                    : bestIndex,
+                0,
+              );
+              setHoverIndex(nearestIndex);
+              setTooltip({
+                visible: true,
+                x: clamp(event.clientX + 14, 8, window.innerWidth - 222),
+                y: clamp(event.clientY - 12, 8, window.innerHeight - 116),
+              });
+            }}
+            onPointerLeave={() => {
+              setHoverIndex(null);
+              setTooltip((current) => ({ ...current, visible: false }));
+            }}
+            onPointerCancel={() => {
+              setHoverIndex(null);
+              setTooltip((current) => ({ ...current, visible: false }));
+            }}
+          />
         </svg>
-        <div className="performance-chart-notes">
-          <span>Left axis: {mode === "Rebased" ? "both series, start = 100" : "VN-Index points"}</span>
-          <span>{mode === "Price" ? "Right axis: GMD (VND '000/share)" : "Hover or tap to inspect each week"}</span>
-        </div>
       </div>
 
-      <div className="beta-strip">
-        <div>
-          <span>5Y weekly raw beta</span>
-          <strong>{payload.statistics.raw_beta.toFixed(2)}x</strong>
-        </div>
-        <div>
-          <span>Blume-adjusted beta</span>
-          <strong>{payload.statistics.adjusted_beta_blume.toFixed(2)}x</strong>
-        </div>
-        <div>
-          <span>Regression R²</span>
-          <strong>{(payload.statistics.r_squared * 100).toFixed(1)}%</strong>
-        </div>
-        <p>
-          {payload.statistics.regression_observations} aligned weekly returns.
-          The valuation keeps a 0.95x Base beta as a conservative overlay; the
-          raw regression and complete price history are linked in the Excel model.
-        </p>
+      <div className="performance-footnote">
+        <span>
+          {rangeLabel} | Weekly Friday close | {formatDate(chart.first.timestamp)} to{" "}
+          {formatDate(chart.last.timestamp)} | Relative performance = GMD return
+          − VN-Index return (percentage points).
+        </span>
+        <span>Hover across the chart to inspect a weekly Friday close.</span>
       </div>
 
-      <p className="footnote performance-footnote">
-        Source: VNStock Quote API, VCI data source. Weekly series uses the last
-        available close in each Friday-ended week. The API response did not
-        provide a separate adjusted-close field.
-      </p>
-    </div>
+      <div
+        className={tooltip.visible ? "performance-floating-tooltip visible" : "performance-floating-tooltip"}
+        style={{ left: tooltip.x, top: tooltip.y }}
+        aria-hidden={!tooltip.visible}
+      >
+        <b>{formatDate(activePoint.timestamp)}</b>
+        <span className="tooltip-index">
+          VN-Index:{" "}
+          {chart.rebased
+            ? `${activePoint.indexValue.toFixed(1)} (index)`
+            : activePoint.vnindex.toFixed(0)}
+        </span>
+        <span className="tooltip-gmd">
+          GMD:{" "}
+          {chart.rebased
+            ? `${activePoint.gmdValue.toFixed(1)} (index)`
+            : `${activePoint.gmd.toFixed(2)}k VND`}
+        </span>
+      </div>
+    </article>
   );
 }

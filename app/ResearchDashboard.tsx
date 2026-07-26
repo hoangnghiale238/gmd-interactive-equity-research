@@ -766,17 +766,6 @@ export default function ResearchDashboard() {
       </section>
 
       <section className="section performance-section" id="performance">
-        <div className="section-heading">
-          <div>
-            <p className="eyebrow">05 · MARKET PERFORMANCE</p>
-            <h2>GMD versus the VN-Index</h2>
-          </div>
-          <p>
-            Compare weekly price performance over multiple windows, then trace
-            the same five-year series into the beta used in the cost-of-equity
-            work.
-          </p>
-        </div>
         <PricePerformance />
       </section>
 

@@ -65,8 +65,13 @@ test("ships the VNStock price-performance and beta evidence", async () => {
   const data = JSON.parse(rawData);
 
   assert.match(dashboard, /id="performance"/);
+  assert.match(chart, /Since initiation/);
+  assert.match(chart, /useState<ChartMode>\("price"\)/);
   assert.match(chart, /Rebased to 100/);
   assert.match(chart, /Price levels/);
+  assert.match(chart, /percentage points/);
+  assert.match(chart, /performance-crosshair/);
+  assert.match(chart, /performance-floating-tooltip/);
   assert.equal(data.weekly.length, 259);
   assert.equal(data.statistics.regression_observations, 258);
   assert.ok(data.statistics.raw_beta > 0.7);

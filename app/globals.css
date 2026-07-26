@@ -2950,6 +2950,377 @@ footer a {
   }
 }
 
+/* MWG-reference dark market-performance panel, adapted to GMD blue */
+.site.light-theme .performance-section {
+  padding-top: 18px;
+  background: transparent;
+}
+
+.site.light-theme .performance-panel {
+  --performance-accent: #35a8ff;
+  position: relative;
+  min-height: 474px;
+  overflow: visible;
+  padding: clamp(22px, 3vw, 32px);
+  color: #ffffff;
+  border: 1px solid #171717;
+  border-radius: 18px;
+  background: #101010;
+  box-shadow: 0 24px 70px rgba(5, 18, 29, 0.2);
+}
+
+.site.light-theme .performance-panel-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 2px;
+}
+
+.site.light-theme .performance-panel h3 {
+  margin: 5px 0 0;
+  color: #ffffff;
+  font-size: clamp(24px, 3vw, 34px);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+
+.site.light-theme .performance-panel .eyebrow {
+  margin: 0;
+  color: #ffffff;
+  opacity: 0.68;
+}
+
+.site.light-theme .performance-control-stack {
+  display: grid;
+  justify-items: end;
+  gap: 7px;
+}
+
+.site.light-theme .performance-range-controls,
+.site.light-theme .performance-mode-controls {
+  display: inline-flex;
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.site.light-theme .performance-range,
+.site.light-theme .performance-mode {
+  border: 0;
+  border-radius: 6px;
+  padding: 8px 10px;
+  color: rgba(255, 255, 255, 0.68);
+  background: transparent;
+  font-size: 12px;
+  font-weight: 800;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.site.light-theme .performance-range:hover,
+.site.light-theme .performance-mode:hover {
+  color: #ffffff;
+}
+
+.site.light-theme .performance-range.active,
+.site.light-theme .performance-mode.active {
+  color: #06111b;
+  background: var(--performance-accent);
+}
+
+.site.light-theme .performance-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  margin: 2px 0 12px;
+  padding: 14px 0;
+  border-block: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.site.light-theme .performance-summary article {
+  display: block;
+  min-width: 0;
+  padding: 0 18px;
+  border: 0;
+  border-right: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.site.light-theme .performance-summary article:first-child {
+  padding-left: 0;
+}
+
+.site.light-theme .performance-summary article:last-child {
+  padding-right: 0;
+  border-right: 0;
+}
+
+.site.light-theme .performance-summary span {
+  display: block;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.site.light-theme .performance-summary strong {
+  display: block;
+  margin-top: 7px;
+  color: #ffffff;
+  font-size: clamp(19px, 2vw, 27px);
+  line-height: 1.1;
+}
+
+.site.light-theme .performance-summary strong.negative {
+  color: #c96f69;
+}
+
+.site.light-theme .performance-summary strong.positive {
+  color: #7fba96;
+}
+
+.site.light-theme .performance-legend {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin: 0 0 2px;
+  padding: 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.site.light-theme .performance-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.site.light-theme .legend-line {
+  display: inline-block;
+  width: 26px;
+  height: 0;
+  border: 0;
+  border-top: 2px solid #aeb3bd;
+  border-radius: 0;
+}
+
+.site.light-theme .legend-line.gmd {
+  border-top-width: 4px;
+  border-color: var(--performance-accent);
+}
+
+.site.light-theme .price-performance-chart {
+  width: 100%;
+  min-height: 320px;
+}
+
+.site.light-theme .price-performance-chart svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+}
+
+.site.light-theme .performance-gridline {
+  stroke: rgba(255, 255, 255, 0.13);
+  stroke-width: 1;
+}
+
+.site.light-theme .performance-date-tick {
+  stroke: rgba(255, 255, 255, 0.55);
+  stroke-width: 1;
+}
+
+.site.light-theme .performance-panel .axis {
+  fill: rgba(255, 255, 255, 0.62);
+  font-size: 12px;
+}
+
+.site.light-theme .performance-series {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: gmdPerformanceLineDraw 600ms cubic-bezier(0.22, 0.72, 0.24, 1) forwards;
+}
+
+.site.light-theme .performance-series-index {
+  stroke: #aeb3bd;
+  stroke-width: 2.2;
+  opacity: 0.78;
+}
+
+.site.light-theme .performance-series-gmd {
+  stroke: var(--performance-accent);
+  stroke-width: 4;
+  animation-delay: 60ms;
+}
+
+@keyframes gmdPerformanceLineDraw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.site.light-theme .performance-crosshair {
+  visibility: hidden;
+  stroke: rgba(255, 255, 255, 0.56);
+  stroke-width: 1;
+  stroke-dasharray: 4 4;
+}
+
+.site.light-theme .performance-crosshair.visible {
+  visibility: visible;
+}
+
+.site.light-theme .performance-hover-dot {
+  visibility: hidden;
+  stroke: #ffffff;
+  stroke-width: 2;
+}
+
+.site.light-theme .performance-hover-dot.visible {
+  visibility: visible;
+}
+
+.site.light-theme .performance-hover-dot.index {
+  fill: #aeb3bd;
+}
+
+.site.light-theme .performance-hover-dot.gmd {
+  fill: var(--performance-accent);
+}
+
+.site.light-theme .performance-hover-overlay {
+  fill: transparent;
+  cursor: crosshair;
+  touch-action: pan-y;
+}
+
+.site.light-theme .performance-footnote {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 8px;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.site.light-theme .performance-footnote span:last-child {
+  text-align: right;
+}
+
+.performance-floating-tooltip {
+  position: fixed;
+  z-index: 1000;
+  display: grid;
+  gap: 5px;
+  width: 210px;
+  pointer-events: none;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 6px;
+  padding: 8px 10px;
+  color: #ffffff;
+  background: rgba(5, 5, 5, 0.96);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.42);
+  font-size: 12px;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 120ms ease, transform 120ms ease;
+}
+
+.performance-floating-tooltip.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.performance-floating-tooltip b {
+  margin-bottom: 2px;
+  color: #ffffff;
+}
+
+.performance-floating-tooltip .tooltip-index {
+  color: #aeb3bd;
+}
+
+.performance-floating-tooltip .tooltip-gmd {
+  color: #35a8ff;
+}
+
+.site.light-theme .performance-panel.performance-empty {
+  display: grid;
+  place-items: center;
+  color: rgba(255, 255, 255, 0.68);
+  text-align: center;
+}
+
+@media (max-width: 1060px) {
+  .site.light-theme .performance-panel-head {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .site.light-theme .performance-control-stack {
+    justify-items: start;
+    width: 100%;
+  }
+
+  .site.light-theme .performance-range-controls {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+
+  .site.light-theme .performance-footnote {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .site.light-theme .performance-footnote span:last-child {
+    text-align: left;
+  }
+}
+
+@media (max-width: 680px) {
+  .site.light-theme .performance-panel {
+    padding: 20px 14px;
+    border-radius: 14px;
+  }
+
+  .site.light-theme .performance-summary article {
+    padding-inline: 10px;
+  }
+
+  .site.light-theme .performance-summary article:first-child {
+    padding-left: 0;
+  }
+
+  .site.light-theme .performance-summary article:last-child {
+    padding-right: 0;
+  }
+
+  .site.light-theme .performance-summary strong {
+    font-size: clamp(16px, 4.8vw, 23px);
+  }
+
+  .site.light-theme .price-performance-chart {
+    min-height: 270px;
+    overflow-x: auto;
+  }
+
+  .site.light-theme .price-performance-chart svg {
+    min-width: 760px;
+  }
+}
+
 /* Final hero composition: keep the supplied GEMADEPT wordmark fully unobstructed. */
 .site.light-theme .hero {
   min-height: 780px !important;
