@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 
 type ScenarioKey = "Base" | "Bull" | "Bear" | "Custom";
 type HistoryMetric = "Revenue" | "Core PBT" | "Throughput";
@@ -248,44 +248,6 @@ const sources = [
   },
 ];
 
-const interviewCards = [
-  {
-    eyebrow: "1 / 7 · QUESTION",
-    title: "What is the investable link?",
-    body: "Vietnam’s trade recovery matters only if it converts into physical container volume. That is why the model separates trade value from national TEU.",
-  },
-  {
-    eyebrow: "2 / 7 · SECTOR",
-    title: "Why ports, not shipping?",
-    body: "Port revenue follows volume, tariff and service mix. Shipping earnings add freight-rate and vessel-supply volatility, making the same macro thesis less reliable.",
-  },
-  {
-    eyebrow: "3 / 7 · SELECTION",
-    title: "Why GMD?",
-    body: "GMD ranks first on asset position, capacity runway, momentum and disclosure. PHP is the strategic benchmark; VSC is the operating comparator.",
-  },
-  {
-    eyebrow: "4 / 7 · HISTORY",
-    title: "What did history prove?",
-    body: "From 2021 to 2025, revenue compounded at 16.7% while core PBT compounded at 33.0%. Associates contributed 45.9% of 2025 core PBT.",
-  },
-  {
-    eyebrow: "5 / 7 · FORECAST",
-    title: "How does the model work?",
-    body: "National TEU × GMD share gives system throughput. Throughput × unit/mix plus logistics creates revenue; margins and associates create earnings and FCFF.",
-  },
-  {
-    eyebrow: "6 / 7 · VALUE",
-    title: "What is the call?",
-    body: "A 50/50 blend of 2026E P/E and DCF/SOTP produces VND 84,500 per share, or 15.4% upside from VND 73,200.",
-  },
-  {
-    eyebrow: "7 / 7 · DISCIPLINE",
-    title: "What can break the thesis?",
-    body: "The BUY requires new capacity to become market share and cash. The probability-weighted upside is only 14.8%, and the Bear value is VND 51,000.",
-  },
-];
-
 function formatNumber(value: number, digits = 0) {
   return new Intl.NumberFormat("en-US", {
     maximumFractionDigits: digits,
@@ -343,7 +305,6 @@ function Slider({
 }
 
 export default function ResearchDashboard() {
-  const [theme, setTheme] = useState<"dark" | "light">("light");
   const [activeChain, setActiveChain] = useState(0);
   const [historyMetric, setHistoryMetric] = useState<HistoryMetric>("Revenue");
   const [selectedYear, setSelectedYear] = useState(4);
@@ -352,8 +313,6 @@ export default function ResearchDashboard() {
   const [weights, setWeights] = useState(peerCriteria.map((criterion) => criterion.weight));
   const [sourceCategory, setSourceCategory] = useState<SourceCategory>("All");
   const [sourceQuery, setSourceQuery] = useState("");
-  const [guideOpen, setGuideOpen] = useState(false);
-  const [guideIndex, setGuideIndex] = useState(0);
   const [riskView, setRiskView] = useState<"Catalysts" | "Falsifiers">("Catalysts");
 
   const updateInput = (key: keyof ScenarioInputs, value: number) => {
@@ -452,171 +411,146 @@ export default function ResearchDashboard() {
     };
   }, [inputs, outputs.dcfValue]);
 
-  useEffect(() => {
-    const handleKeydown = (event: KeyboardEvent) => {
-      if (!guideOpen) return;
-      if (event.key === "Escape") setGuideOpen(false);
-      if (event.key === "ArrowRight") {
-        setGuideIndex((index) => Math.min(interviewCards.length - 1, index + 1));
-      }
-      if (event.key === "ArrowLeft") {
-        setGuideIndex((index) => Math.max(0, index - 1));
-      }
-    };
-    window.addEventListener("keydown", handleKeydown);
-    return () => window.removeEventListener("keydown", handleKeydown);
-  }, [guideOpen]);
-
   const historyValues = history[historyMetric];
   const historyMax = Math.max(...historyValues);
 
   return (
-    <main className={theme === "light" ? "site light-theme" : "site"}>
+    <main className="site light-theme">
       <header className="topbar">
-        <a className="brand" href="#top" aria-label="Back to top">
-          <span className="brand-mark">G</span>
-          <span>
-            GMD Research
-            <small>Data cut-off · 25 Jul 2026</small>
-          </span>
+        <a className="brand" href="#top" aria-label="GMD project home">
+          <span className="brand-mark">GMD</span>
+          <span>Equity Research Project</span>
         </a>
         <nav aria-label="Main navigation">
-          <a href="#thesis">Thesis</a>
-          <a href="#peers">Peers</a>
-          <a href="#history">History</a>
-          <a href="#scenario">Scenario Lab</a>
-          <a href="#sources">Sources</a>
+          <a href="#summary">Investment case</a>
+          <a href="#valuation">Valuation</a>
+          <a href="#history">Forecasts</a>
+          <a className="download-pill" href="#downloads">Downloads</a>
         </nav>
-        <div className="topbar-actions">
-          <a
-            className="github-button"
-            href="https://github.com/hoangnghiale238/gmd-interactive-equity-research"
-            target="_blank"
-            rel="noreferrer"
-          >
-            GitHub ↗
-          </a>
-          <button
-            className="icon-button"
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            aria-label="Toggle color theme"
-          >
-            {theme === "dark" ? "☼" : "◐"}
-          </button>
-          <button
-            className="guide-button"
-            onClick={() => {
-              setGuideIndex(0);
-              setGuideOpen(true);
-            }}
-          >
-            ▶ Recruiter mode
-          </button>
-        </div>
       </header>
 
       <section className="hero" id="top">
-        <div className="hero-copy">
-          <p className="eyebrow">VIETNAM PORTS · TOP-DOWN EQUITY RESEARCH</p>
-          <h1>
-            Export recovery is real.
-            <span>Port earnings are the cleaner trade.</span>
-          </h1>
-          <p className="hero-summary">
-            A source-audited research case that turns Vietnam trade and FDI into
-            container throughput, GMD earnings, cash flow and valuation.
+        <div className="hero-overlay" />
+        <div className="hero-content">
+          <p className="kicker">Personal Equity Research Project</p>
+          <h1>GMD Equity Research: Export Recovery &amp; Port Earnings</h1>
+          <p className="hero-copy-text">
+            A 12-month view on Gemadept. Vietnam&apos;s trade recovery supports
+            container throughput, while capacity ramp-up and associate earnings
+            remain the key execution variables.
           </p>
+          <p className="hero-meta">Base case · 12-month horizon · Market data as of 24 Jul 2026</p>
           <div className="hero-actions">
-            <a className="primary-button" href="#scenario">
-              Stress-test the thesis
-            </a>
-            <a className="secondary-button" href="/downloads/GMD_Top_Down_Investment_Note.pdf">
-              Download investment note ↗
-            </a>
-            <a
-              className="secondary-button github-hero-button"
-              href="https://github.com/hoangnghiale238/gmd-interactive-equity-research"
-              target="_blank"
-              rel="noreferrer"
-            >
-              View source on GitHub ↗
-            </a>
+            <a className="btn primary" href="#summary">Read investment case</a>
+            <a className="btn" href="#valuation">Open valuation module</a>
           </div>
-          <p className="audit-line">
-            <span>●</span> 137/137 Phase 4 controls · 14/14 packaging controls ·
-            0 formula errors
-          </p>
         </div>
 
-        <div className="call-card">
-          <div className="call-card-top">
+        <aside className="hero-card" aria-label="Valuation snapshot">
+          <span>Selected blended target</span>
+          <strong>84,500</strong>
+          <small>VND/share · 15.4% upside</small>
+          <div className="hero-card-grid">
             <div>
-              <p>Investment call</p>
-              <RatingBadge rating="BUY" />
-            </div>
-            <span className="confidence">Execution-sensitive</span>
-          </div>
-          <strong className="target-price">VND 84,500</strong>
-          <span className="upside">+15.4% base-case upside</span>
-          <div className="price-track" aria-label="Current price to target price">
-            <span className="track-current" style={{ left: "32%" }}>
-              73,200
-            </span>
-            <span className="track-target" style={{ left: "74%" }}>
-              84,500
-            </span>
-          </div>
-          <div className="call-grid">
-            <div>
-              <span>2026E revenue</span>
-              <strong>6,757bn</strong>
+              <span>Current</span>
+              <b>73,200</b>
             </div>
             <div>
-              <span>2026E core PBT</span>
-              <strong>3,009bn</strong>
-            </div>
-            <div>
-              <span>Base DCF</span>
-              <strong>88,988</strong>
-            </div>
-            <div>
-              <span>Bear value</span>
-              <strong className="negative">51,000</strong>
+              <span>Horizon</span>
+              <b>12 months</b>
             </div>
           </div>
-          <div className="margin-warning">
-            <span>!</span>
-            Probability-weighted upside is 14.8% — just below the 15% BUY
-            hurdle.
+        </aside>
+      </section>
+
+      <section id="summary" className="investment-summary" aria-label="Investment summary">
+        <div className="summary-main">
+          <p className="eyebrow">Investment Summary</p>
+          <div className="summary-title-row">
+            <h2>GMD investment view</h2>
+            <span className="summary-scenario">Base case</span>
           </div>
+          <div className="recommendation-line">
+            <div>
+              <span>Recommendation</span>
+              <strong className="summary-buy">BUY</strong>
+              <small>Based on the blended target price versus the current market price.</small>
+            </div>
+            <div>
+              <span>Selected target</span>
+              <strong>84,500</strong>
+              <small>15.4% upside from VND 73,200/share.</small>
+            </div>
+          </div>
+          <div className="summary-range">
+            <div><span>Target range</span><b>51,000–105,500</b></div>
+            <div><span>2026E revenue</span><b>6,757bn</b></div>
+            <div><span>2026E core PBT</span><b>3,009bn</b></div>
+            <div><span>Investment horizon</span><b>12 months</b></div>
+          </div>
+        </div>
+
+        <div className="summary-lists">
+          <article>
+            <div className="list-head"><span>3 thesis</span><b>Why the stock works</b></div>
+            <ol className="clean-list">
+              <li><strong>Trade recovery supports port volumes</strong><small>Container throughput is forecast separately from headline trade value.</small></li>
+              <li><strong>Capacity creates a market-share runway</strong><small>Nam Dinh Vu and Gemalink provide room to capture additional services and volumes.</small></li>
+              <li><strong>Associates strengthen earnings quality</strong><small>Equity-accounted port assets remain a material contributor to core profit.</small></li>
+            </ol>
+          </article>
+          <article>
+            <div className="list-head risk"><span>3 risks</span><b>What can break the thesis</b></div>
+            <ol className="clean-list risk-list">
+              <li><strong>Capacity ramps slower than expected</strong><small>New berths add value only when they attract services and reach adequate utilisation.</small></li>
+              <li><strong>Market share weakens</strong><small>Regional competition may absorb part of the national throughput recovery.</small></li>
+              <li><strong>Higher capex or discount rate</strong><small>Cash conversion and DCF value are sensitive to expansion spending and WACC.</small></li>
+            </ol>
+          </article>
         </div>
       </section>
 
-      <section className="ticker-strip" aria-label="Key market and model indicators">
-        {[
-          ["1H26 trade", "+27.1%", "positive"],
-          ["Disbursed FDI", "+11.2%", "positive"],
-          ["2025 national TEU", "34.0m", "neutral"],
-          ["2026E GMD TEU", "5.68m", "positive"],
-          ["WACC", "11.58%", "neutral"],
-          ["Terminal growth", "4.0%", "neutral"],
-        ].map(([label, value, tone]) => (
-          <div key={label}>
-            <span>{label}</span>
-            <strong className={tone}>{value}</strong>
+      <section className="methodology-box" aria-label="Methodology and data cutoff">
+        <div className="methodology-head">
+          <div>
+            <p className="eyebrow">Methodology / Data Cutoff</p>
+            <h2>How to read the model</h2>
           </div>
-        ))}
+          <p>
+            The forecast starts with national container throughput, then applies
+            GMD market share, unit revenue, margins and associate earnings.
+            P/E and DCF/SOTP are weighted equally in the selected target.
+          </p>
+        </div>
+        <div className="methodology-grid">
+          <article><span>Data cutoff</span><strong>24 Jul 2026</strong><small>Market price and public disclosures used in the model.</small></article>
+          <article><span>Current price</span><strong>73,200</strong><small>VND/share used for expected-return calculations.</small></article>
+          <article><span>Investment horizon</span><strong>12 months</strong><small>Target price is presented on a 12-month basis.</small></article>
+          <article><span>Operating anchor</span><strong>Container TEU</strong><small>Physical throughput, not merchandise value, drives the port forecast.</small></article>
+          <article><span>Valuation</span><strong>P/E + DCF/SOTP</strong><small>A 50/50 blend balances earnings and cash-flow views.</small></article>
+          <article><span>Primary watch item</span><strong>Market share</strong><small>Capacity must translate into services, utilisation and retained share.</small></article>
+        </div>
+        <div className="talking-points">
+          <article>
+            <b>Most important KPI to monitor</b>
+            <p>GMD system throughput relative to national container growth. A widening gap would signal that new capacity is not converting into market share.</p>
+          </article>
+          <article>
+            <b>Why ports rather than shipping</b>
+            <p>Port earnings are driven mainly by throughput, tariffs and service mix. Shipping adds freight-rate and vessel-supply volatility to the same macro view.</p>
+          </article>
+        </div>
       </section>
 
       <section className="section" id="thesis">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">01 · INVESTMENT LOGIC</p>
-            <h2>Follow the research chain</h2>
+            <p className="eyebrow">Investment logic</p>
+            <h2>From trade recovery to earnings</h2>
           </div>
           <p>
-            Click each link. The thesis survives only when every conversion is
-            observable and defensible.
+            Each step is modelled separately so that trade value, physical
+            container volume and company earnings are not treated as the same variable.
           </p>
         </div>
 
@@ -709,7 +643,7 @@ export default function ResearchDashboard() {
         <div className="section-heading">
           <div>
             <p className="eyebrow">03 · PEER SELECTION LAB</p>
-            <h2>Change the weights. Test whether GMD still wins.</h2>
+            <h2>Peer selection and scoring</h2>
           </div>
           <button
             className="text-button"
@@ -850,7 +784,7 @@ export default function ResearchDashboard() {
         </div>
         <p className="footnote">
           Data limitation: 2021–2022 system-throughput values are chart-derived
-          approximations and are disclosed as such in the source audit.
+          approximations and are identified separately from reported figures.
         </p>
       </section>
 
@@ -1139,7 +1073,7 @@ export default function ResearchDashboard() {
         <div className="section-heading">
           <div>
             <p className="eyebrow">08 · SOURCE EXPLORER</p>
-            <h2>Audit the evidence, not just the conclusion</h2>
+            <h2>Sources and supporting evidence</h2>
           </div>
           <p>41 registered sources in the full Excel model. Key sources are searchable here.</p>
         </div>
@@ -1189,13 +1123,13 @@ export default function ResearchDashboard() {
         </div>
       </section>
 
-      <section className="download-section">
+      <section className="download-section" id="downloads">
         <div>
-          <p className="eyebrow">DOWNLOAD THE AUDIT TRAIL</p>
-          <h2>Recruiter-friendly on the surface. Auditable underneath.</h2>
+          <p className="eyebrow">Project files</p>
+          <h2>Model and report downloads</h2>
           <p>
-            The interactive site is the front door. The linked model, source
-            appendix and presentation remain the evidence.
+            The Excel model contains the operating forecast, valuation and source
+            register. The report presents the investment case in a shorter format.
           </p>
         </div>
         <div className="download-grid">
@@ -1207,7 +1141,7 @@ export default function ResearchDashboard() {
           <a href="/downloads/GMD_Top_Down_Investment_Note.pdf">
             <span>PDF</span>
             <strong>7-slide investment note</strong>
-            <em>Fast recruiter review</em>
+            <em>Concise investment case and valuation</em>
           </a>
           <a href="/downloads/GMD_Top_Down_Investment_Note.pptx">
             <span>PPTX</span>
@@ -1219,106 +1153,19 @@ export default function ResearchDashboard() {
             <strong>Interview script</strong>
             <em>VN + EN pitches and Q&A</em>
           </a>
-          <a
-            href="https://github.com/hoangnghiale238/gmd-interactive-equity-research"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <span>GITHUB</span>
-            <strong>Public source repository</strong>
-            <em>Code, model files and documentation</em>
-          </a>
         </div>
       </section>
 
       <footer>
         <div>
           <strong>GMD · Interactive Equity Research</strong>
-          <span>Built from public information and analyst assumptions.</span>
+          <span>Public information, company disclosures and analyst estimates.</span>
         </div>
         <p>
           Educational portfolio project — not investment advice. Data cut-off:
-          25 July 2026.{" "}
-          <a
-            href="https://github.com/hoangnghiale238/gmd-interactive-equity-research"
-            target="_blank"
-            rel="noreferrer"
-          >
-            View source on GitHub ↗
-          </a>
+          24 July 2026.
         </p>
       </footer>
-
-      <button
-        className="floating-guide"
-        onClick={() => {
-          setGuideIndex(0);
-          setGuideOpen(true);
-        }}
-      >
-        <span>▶</span>
-        Present this research
-      </button>
-
-      {guideOpen && (
-        <div className="guide-overlay" role="dialog" aria-modal="true">
-          <button
-            className="guide-backdrop"
-            onClick={() => setGuideOpen(false)}
-            aria-label="Close recruiter mode"
-          />
-          <div className="guide-modal">
-            <button className="guide-close" onClick={() => setGuideOpen(false)}>
-              ×
-            </button>
-            <div className="guide-progress">
-              {interviewCards.map((_, index) => (
-                <button
-                  key={index}
-                  className={guideIndex === index ? "active" : ""}
-                  onClick={() => setGuideIndex(index)}
-                  aria-label={`Go to interview card ${index + 1}`}
-                />
-              ))}
-            </div>
-            <p className="eyebrow">{interviewCards[guideIndex].eyebrow}</p>
-            <h2>{interviewCards[guideIndex].title}</h2>
-            <p className="guide-body">{interviewCards[guideIndex].body}</p>
-            <div className="guide-callout">
-              <span>INTERVIEW CUE</span>
-              <p>
-                Answer with the mechanism first, then give one number and one
-                caveat.
-              </p>
-            </div>
-            <div className="guide-actions">
-              <button
-                disabled={guideIndex === 0}
-                onClick={() => setGuideIndex((index) => Math.max(0, index - 1))}
-              >
-                ← Previous
-              </button>
-              {guideIndex < interviewCards.length - 1 ? (
-                <button
-                  className="primary-button"
-                  onClick={() =>
-                    setGuideIndex((index) =>
-                      Math.min(interviewCards.length - 1, index + 1),
-                    )
-                  }
-                >
-                  Next →
-                </button>
-              ) : (
-                <button className="primary-button" onClick={() => setGuideOpen(false)}>
-                  Finish
-                </button>
-              )}
-            </div>
-            <small>Keyboard: ← → to navigate · Esc to close</small>
-          </div>
-        </div>
-      )}
     </main>
   );
 }

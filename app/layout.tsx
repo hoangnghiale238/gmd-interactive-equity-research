@@ -12,7 +12,7 @@ export async function generateMetadata(): Promise<Metadata> {
     metadataBase: new URL(origin),
     title: "GMD — Interactive Equity Research",
     description:
-      "A source-audited top-down equity research case linking Vietnam trade to GMD throughput, earnings and valuation.",
+      "A top-down equity research project linking Vietnam trade, container throughput, GMD earnings and valuation.",
     icons: {
       icon: "/og.png",
       shortcut: "/og.png",
